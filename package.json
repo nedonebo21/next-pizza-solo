@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "format": "prettier --write src",
+    "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx}'",
     "lint": "eslint . --ext .jsx,.js,.tsx,.ts  --no-error-on-unmatched-pattern --fix"
   },
   "dependencies": {
@@ -21,8 +21,8 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@nedonebo21/eslint-config": "^1.0.2",
-    "@nedonebo21/prettier-config": "^1.0.0",
+    "@nedonebo21/eslint-config": "^1.0.7",
+    "@nedonebo21/prettier-config": "^1.0.3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
