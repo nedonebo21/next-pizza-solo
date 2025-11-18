@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "format": "prettier --write src",
-    "lint": "eslint"
+    "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx}'",
+    "lint": "eslint . --ext .jsx,.js,.tsx,.ts  --no-error-on-unmatched-pattern --fix"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
@@ -21,15 +21,15 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@philian73/eslint-config": "^1.1.5",
-    "@philian73/prettier-config": "^1.0.0",
+    "@nedonebo21/eslint-config": "^1.0.7",
+    "@nedonebo21/prettier-config": "^1.0.3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.0.3",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "prettier": "@nedonebo21/prettier-config"
 }
