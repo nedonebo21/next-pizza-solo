@@ -1,5 +1,7 @@
 import { Nunito } from 'next/font/google'
 
+import { Header } from '@/widgets/header'
+
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 
@@ -23,8 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang={'en'}>
-      <body className={`${nunito.className} min-h-screen bg-white`}>
-        <main>{children}</main>
+      <body className={nunito.className}>
+        <main className={'min-h-screen bg-white'}>
+          <Header />
+          {children}
+        </main>
       </body>
     </html>
   )
