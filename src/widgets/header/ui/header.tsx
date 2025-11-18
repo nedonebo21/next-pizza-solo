@@ -2,12 +2,10 @@ import { Separator } from '@radix-ui/react-select'
 import { ArrowRight, ShoppingCart, User } from 'lucide-react'
 import Image from 'next/image'
 
+import Logo from '@/shared/assets/images/logo.png'
 import { cn } from '@/shared/lib/utils'
 import { Container } from '@/shared/ui/container'
 import { Button } from '@/shared/ui/shadcn/button'
-import { Input } from '@/shared/ui/shadcn/input'
-
-import Logo from '../../../../public/logo.png'
 
 import type { ComponentProps } from 'react'
 
