@@ -42,9 +42,7 @@ export const Typography = <T extends ElementType = 'p'>({
     className
   )
 
-  const componentTag = variantMapping[variant] ?? 'p'
-
-  const Component = as ?? componentTag
+  const Component = as ?? 'p'
 
   return <Component className={classes} {...rest} />
 }

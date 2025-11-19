@@ -8,6 +8,7 @@ import { Container } from '@/shared/ui/container'
 import { Button } from '@/shared/ui/shadcn/button'
 
 import type { ComponentProps } from 'react'
+import { Typography } from '@/shared/ui/typography'
 
 type HeaderProps = Omit<ComponentProps<'header'>, 'children'>
 
@@ -18,8 +19,22 @@ export const Header = ({ className, ...rest }: HeaderProps) => {
         <div className={'flex items-center gap-4'}>
           <Image src={Logo} alt={'logo'} />
           <div className={'flex flex-col gap-1'}>
-            <h1 className={'text-2xl font-black uppercase'}>Next Pizza</h1>
-            <p className={'text-sm text-gray-400 leading-3'}>by nedonebo21</p>
+            <Typography
+              variant={'title'}
+              as={'h1'}
+              textAlign={'left'}
+              className={'font-black uppercase'}
+            >
+              Next Pizza
+            </Typography>
+            <Typography
+              variant={'bodyNormal'}
+              as={'p'}
+              textAlign={'left'}
+              className={'text-gray-400 leading-3'}
+            >
+              by nedonebo21
+            </Typography>
           </div>
         </div>
 
@@ -28,14 +43,14 @@ export const Header = ({ className, ...rest }: HeaderProps) => {
             <User /> Войти
           </Button>
           <div>
-            <Button className={'group relative'}>
-              <b>520 ₽</b>
+            <Button className={'group relative flex items-center'}>
+              <Typography variant={'bodyBold'}>520 ₽</Typography>
               <Separator className={'h-full w-[1px] bg-white/30 mx-3'} />
               <div
                 className={'flex items-center gap-2 transition duration-300 group-hover:opacity-0'}
               >
                 <ShoppingCart size={16} />
-                <b>3</b>
+                <Typography variant={'bodyBold'}>3</Typography>
               </div>
               <ArrowRight
                 size={20}
