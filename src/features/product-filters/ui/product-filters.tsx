@@ -2,7 +2,6 @@ import { ComponentProps } from 'react'
 import { Typography } from '@/shared/ui/typography'
 import { FilterCheckbox } from '@/shared/ui/filter-checkbox'
 import { Input } from '@/shared/ui/shadcn/input'
-import { cn } from '@/shared/lib/utils'
 import { RangeSlider } from '@/shared/ui/range-slider'
 import { CheckboxFilterGroup } from '@/shared/ui/checkbox-filter-group'
 
