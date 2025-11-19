@@ -1,5 +1,1 @@
-import { Button } from '@/shared/ui/shadcn/button'
-
-export default function Home() {
-  return <Button variant={'outline'}>Корзина</Button>
-}
+export { Home as default } from '@/pages/home'
