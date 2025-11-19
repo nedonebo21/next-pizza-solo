@@ -10,7 +10,7 @@ type ProductFiltersProps = Omit<ComponentProps<'div'>, 'children'>
 
 export const ProductFilters = ({ className, ...rest }: ProductFiltersProps) => {
   return (
-    <div className={cn('max-w-[250px]', className)} {...rest}>
+    <div className={className} {...rest}>
       <Typography className={'mb-7'} variant={'subtitle'} textAlign={'left'}>
         Фильтрация
       </Typography>

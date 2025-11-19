@@ -1,6 +1,7 @@
 import { Container } from '@/shared/ui/container'
 import { Typography } from '@/shared/ui/typography'
 import { TopBar } from '@/widgets/top-bar'
+import { ProductFilters } from '@/features/product-filters'
 
 export const Home = () => {
   return (
@@ -13,7 +14,9 @@ export const Home = () => {
       <TopBar categories={['Все', 'Мясные', 'Острые', 'Сладкие', 'Вегетарианская', 'С курицей']} />
       <Container className={'mt-9 pb-14'}>
         <div className={'flex gap-15'}>
-          <div className={'w-[250px]'}></div>
+          <div className={'w-[250px]'}>
+            <ProductFilters />
+          </div>
           <div className={'flex-1'}>
             <div className={'flex-col gap-12'}></div>
           </div>

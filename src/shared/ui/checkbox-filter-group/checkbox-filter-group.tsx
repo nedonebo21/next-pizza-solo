@@ -76,7 +76,7 @@ export const CheckboxFilterGroup = ({
         </div>
       )}
 
-      <div className="flex flex-col gap-4 max-h-96 pr-2 overflow-auto scrollbar">
+      <div className="flex flex-col gap-4 max-h-96 pr-2 overflow-y-auto scrollbar">
         {list.map((item, index) => (
           <FilterCheckbox
             key={`${index}-${item.value}`}
