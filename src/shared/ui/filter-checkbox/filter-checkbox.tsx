@@ -2,10 +2,10 @@ import { Checkbox } from '@/shared/ui/shadcn/checkbox'
 import { ComponentProps, useId } from 'react'
 import { Typography } from '@/shared/ui/typography'
 
-type FilterCheckboxProps = {
+export type FilterCheckboxProps = {
   value: string
   label: string
-} & Omit<ComponentProps<typeof Checkbox>, 'value'>
+} & Omit<ComponentProps<typeof Checkbox>, 'value' | 'name'>
 
 export const FilterCheckbox = ({ label, value, id, ...rest }: FilterCheckboxProps) => {
   const generatedId = useId()
