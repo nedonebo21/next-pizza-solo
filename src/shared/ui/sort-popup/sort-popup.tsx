@@ -9,7 +9,7 @@ export const SortPopup = ({ className, ...rest }: SortPopupProps) => {
   return (
     <div
       className={cn(
-        'inline-flex items-center gap-2 bg-gray-50 p-4 rounded-2xl cursor-pointer',
+        'inline-flex items-center gap-2 bg-gray-50 px-4 h-[52px] rounded-2xl cursor-pointer',
         className
       )}
       {...rest}

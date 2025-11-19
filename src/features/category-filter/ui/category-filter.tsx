@@ -3,15 +3,14 @@ import { Button } from '@/shared/ui/shadcn/button'
 import { cn } from '@/shared/lib/utils'
 
 type CategoryFilterProps = {
-  categories?: string[]
+  categories: string[]
 } & Omit<ComponentProps<'div'>, 'children'>
 
 export const CategoryFilter = ({ className, categories, ...rest }: CategoryFilterProps) => {
-  const cats = categories ?? ['Все', 'Мясные', 'Острые', 'Вегетарианские', 'С курицей']
   const activeIndex = 0
   return (
     <div className={cn('inline-flex gap-1 bg-gray-50 rounded-2xl', className)} {...rest}>
-      {cats.map((category, index) => {
+      {categories.map((category, index) => {
         return (
           <a key={category} className={'flex items-center h-11 rounded-2xl px-5'}>
             <Button
