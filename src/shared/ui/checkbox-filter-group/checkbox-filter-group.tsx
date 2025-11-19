@@ -20,7 +20,7 @@ interface Props {
   className?: string
 }
 
-export const CheckboxFiltersGroup = ({
+export const CheckboxFilterGroup = ({
   title,
   items,
   limit = 5,

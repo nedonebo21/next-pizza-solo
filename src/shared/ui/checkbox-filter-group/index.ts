@@ -1,1 +1,1 @@
-export { CheckboxFiltersGroup } from './checkbox-filter-group'
+export { CheckboxFilterGroup } from './checkbox-filter-group'
