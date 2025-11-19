@@ -3,8 +3,10 @@ import { Typography } from '@/shared/ui/typography'
 import { FilterCheckbox } from '@/shared/ui/filter-checkbox'
 import { Input } from '@/shared/ui/shadcn/input'
 import { cn } from '@/shared/lib/utils'
+import { RangeSlider } from '@/shared/ui/range-slider'
 
 type ProductFiltersProps = Omit<ComponentProps<'div'>, 'children'>
+
 export const ProductFilters = ({ className, ...rest }: ProductFiltersProps) => {
   return (
     <div className={cn('max-w-[250px]', className)} {...rest}>
@@ -23,6 +25,7 @@ export const ProductFilters = ({ className, ...rest }: ProductFiltersProps) => {
           <Input type={'number'} placeholder={'0'} min={0} max={1000} defaultValue={0} />
           <Input type={'number'} placeholder={'1000'} min={100} max={1000} />
         </div>
+        <RangeSlider step={10} min={100} max={1000} />
       </div>
     </div>
   )
