@@ -1,6 +1,7 @@
 import { Container, Typography } from '@/shared/ui'
 import { TopBar } from '@/widgets/top-bar'
 import { ProductFilters } from '@/features/product-filters'
+import { ProductCard } from '@/pages/home/ui/product-card/product-card'
 
 export const Home = () => {
   return (
@@ -17,7 +18,40 @@ export const Home = () => {
             <ProductFilters />
           </div>
           <div className={'flex-1'}>
-            <div className={'flex-col gap-12'}></div>
+            <div className={'flex-col gap-12'}>
+              <ProductCard
+                id={0}
+                name={'Диабло'}
+                price={550}
+                imageUrl={
+                  'https://media.dodostatic.net/image/r:292x292/0198bf439a007604880d0231be87cd3e.avif'
+                }
+              />
+              <ProductCard
+                id={0}
+                name={'Диабло'}
+                price={550}
+                imageUrl={
+                  'https://media.dodostatic.net/image/r:292x292/0198bf439a007604880d0231be87cd3e.avif'
+                }
+              />
+              <ProductCard
+                id={0}
+                name={'Диабло'}
+                price={550}
+                imageUrl={
+                  'https://media.dodostatic.net/image/r:292x292/0198bf439a007604880d0231be87cd3e.avif'
+                }
+              />
+              <ProductCard
+                id={0}
+                name={'Диабло'}
+                price={550}
+                imageUrl={
+                  'https://media.dodostatic.net/image/r:292x292/0198bf439a007604880d0231be87cd3e.avif'
+                }
+              />
+            </div>
           </div>
         </div>
       </Container>
