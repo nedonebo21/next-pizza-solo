@@ -1,5 +1,4 @@
-import { Container } from '@/shared/ui/container'
-import { Typography } from '@/shared/ui/typography'
+import { Container, Typography } from '@/shared/ui'
 import { TopBar } from '@/widgets/top-bar'
 import { ProductFilters } from '@/features/product-filters'
 

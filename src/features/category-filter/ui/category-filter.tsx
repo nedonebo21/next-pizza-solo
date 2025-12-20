@@ -1,5 +1,5 @@
 import { ComponentProps } from 'react'
-import { Button } from '@/shared/ui/shadcn/button'
+import { Button } from '@/shared/ui/shadcn'
 import { cn } from '@/shared/lib/utils'
 
 type CategoryFilterProps = {

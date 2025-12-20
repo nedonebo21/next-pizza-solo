@@ -1,9 +1,6 @@
 import { ComponentProps } from 'react'
-import { Typography } from '@/shared/ui/typography'
-import { FilterCheckbox } from '@/shared/ui/filter-checkbox'
-import { Input } from '@/shared/ui/shadcn/input'
-import { RangeSlider } from '@/shared/ui/range-slider'
-import { CheckboxFilterGroup } from '@/shared/ui/checkbox-filter-group'
+import { Typography, RangeSlider, CheckboxFilterGroup, FilterCheckbox } from '@/shared/ui'
+import { Input } from '@/shared/ui/shadcn'
 
 type ProductFiltersProps = Omit<ComponentProps<'div'>, 'children'>
 
