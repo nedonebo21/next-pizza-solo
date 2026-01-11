@@ -4,7 +4,7 @@ import { Typography } from '@/shared/ui'
 import { ProductCard } from './product-card/product-card'
 import { RefObject, useEffect, useRef } from 'react'
 import { useIntersection } from 'react-use'
-import { useCategoryStore } from '@/features/category-filter/model/category'
+import { useCategoryStore } from '@/features/category-filter'
 
 type Props = {
   title: string

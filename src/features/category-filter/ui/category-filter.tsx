@@ -3,7 +3,7 @@
 import { ComponentProps } from 'react'
 import { cn } from '@/shared/lib/utils'
 import { Button } from '@/shared/ui/shadcn/button'
-import { useCategoryStore } from '@/features/category-filter/model/category'
+import { useCategoryStore } from '@/features/category-filter'
 
 type CategoryFilterProps = Omit<ComponentProps<'div'>, 'children'>
 
