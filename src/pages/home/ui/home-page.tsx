@@ -11,9 +11,7 @@ export const Home = () => {
           Все пиццы
         </Typography>
       </Container>
-      <TopBar
-        categories={['Пиццы', 'Комбо', 'Закуски', 'Коктейли', 'Кофе', 'Напитки', 'Десерты']}
-      />
+      <TopBar />
       <Container className={'mt-9 pb-14'}>
         <div className={'flex gap-15'}>
           <div className={'w-[250px]'}>

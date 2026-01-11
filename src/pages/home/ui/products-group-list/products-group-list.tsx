@@ -4,6 +4,7 @@ import { Typography } from '@/shared/ui'
 import { ProductCard } from './product-card/product-card'
 import { RefObject, useEffect, useRef } from 'react'
 import { useIntersection } from 'react-use'
+import { useCategoryStore } from '@/features/category-filter/model/category'
 
 type Props = {
   title: string
@@ -13,6 +14,8 @@ type Props = {
 }
 
 export const ProductsGroupList = ({ items, title, categoryId, className }: Props) => {
+  const setActiveCategoryId = useCategoryStore(state => state.setActiveId)
+
   const intersectionRef = useRef<HTMLDivElement>(null)
   const intersection = useIntersection(intersectionRef as RefObject<HTMLElement>, {
     threshold: 0.4,
@@ -20,7 +23,7 @@ export const ProductsGroupList = ({ items, title, categoryId, className }: Props
 
   useEffect(() => {
     if (intersection?.isIntersecting) {
-      console.log(title, categoryId)
+      setActiveCategoryId(categoryId)
     }
   }, [categoryId, intersection?.isIntersecting, title])
 
