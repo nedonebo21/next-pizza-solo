@@ -5,7 +5,7 @@ generator client {
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
-  directUrl = env("POSTGRES_URL_NON_POOLING")
+  directUrl = env("DATABASE_URL_UNPOOLED")
 }
 
 model User {
@@ -15,6 +15,7 @@ model User {
   email    String @unique
   password String
   role UserRole @default(USER)
+  verified DateTime
 
   provider String?
   providerId String?
