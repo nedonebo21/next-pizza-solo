@@ -1,10 +1,17 @@
+'use client'
+
 import { ComponentProps } from 'react'
 import { Typography, RangeSlider, CheckboxFilterGroup, FilterCheckbox } from '@/shared/ui'
 import { Input } from '@/shared/ui/shadcn/input'
+import { useIngredientsFilter } from '@/shared/lib/hooks/use-ingredients-filter'
 
 type ProductFiltersProps = Omit<ComponentProps<'div'>, 'children'>
 
 export const ProductFilters = ({ className, ...rest }: ProductFiltersProps) => {
+  const { ingredients } = useIngredientsFilter()
+
+  const items = ingredients.map(item => ({ value: String(item.id), label: item.name }))
+
   return (
     <div className={className} {...rest}>
       <Typography className={'mb-7'} variant={'subtitle'} textAlign={'left'}>
@@ -24,19 +31,7 @@ export const ProductFilters = ({ className, ...rest }: ProductFiltersProps) => {
         </div>
         <RangeSlider step={10} min={100} max={1000} />
       </div>
-      <CheckboxFilterGroup
-        title={'Ингредиенты'}
-        items={[
-          { label: 'Сырный соус', value: '1' },
-          { label: 'Моцарелла', value: '2' },
-          { label: 'Чеснок', value: '3' },
-          { label: 'Солёные огурчики', value: '4' },
-          { label: 'Красный лук', value: '5' },
-          { label: 'Томаты', value: '6' },
-          { label: 'Пепперони', value: '7' },
-          { label: 'Грибы', value: '8' },
-        ]}
-      />
+      <CheckboxFilterGroup title={'Ингредиенты'} items={items} />
     </div>
   )
 }
