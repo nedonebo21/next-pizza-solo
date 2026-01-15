@@ -23,13 +23,13 @@ export const SearchInput = ({ className, ...rest }: SearchInputProps) => {
     setFocused(true)
   }
 
-  useClickAway(ref, () => {
-    setFocused(false)
-  })
-
   const handleValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value)
   }
+
+  useClickAway(ref, () => {
+    setFocused(false)
+  })
 
   useDebounce(
     () => {
@@ -40,6 +40,12 @@ export const SearchInput = ({ className, ...rest }: SearchInputProps) => {
     500,
     [searchQuery]
   )
+
+  const handleClickItem = () => {
+    setFocused(false)
+    setSearchQuery('')
+    setProducts([])
+  }
 
   const hasProducts = products.length > 0
 
@@ -74,6 +80,7 @@ export const SearchInput = ({ className, ...rest }: SearchInputProps) => {
                 key={product.id}
                 href={`/product/${product.id}`}
                 className={'flex items-center gap-3 px-3 py-2 hover:bg-primary/10 cursor-pointer'}
+                onClick={handleClickItem}
               >
                 <img className={'rounded-sm h-8'} src={product.imageUrl} alt={product.name} />
                 <Typography variant={'bodyNormal'} as={'span'}>
