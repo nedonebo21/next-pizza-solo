@@ -1,6 +1,6 @@
 import { Container, Typography } from '@/shared/ui'
 import { TopBar } from '@/widgets/top-bar'
-import { ProductFilters } from '@/features/product-filters'
+import { ProductFilters } from '@/features/products'
 import { ProductsGroupList } from '@/pages/home/ui/products-group-list/products-group-list'
 
 export const Home = () => {

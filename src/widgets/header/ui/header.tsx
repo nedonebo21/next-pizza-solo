@@ -9,6 +9,8 @@ import { Button } from '@/shared/ui/shadcn/button'
 
 import type { ComponentProps } from 'react'
 import { Typography } from '@/shared/ui/typography'
+import Link from 'next/link'
+import { SearchInput } from '@/shared/ui'
 
 type HeaderProps = Omit<ComponentProps<'header'>, 'children'>
 
@@ -16,7 +18,7 @@ export const Header = ({ className, ...rest }: HeaderProps) => {
   return (
     <header className={cn('border border-b', className)} {...rest}>
       <Container className={'flex items-center justify-between py-10'}>
-        <div className={'flex items-center gap-4'}>
+        <Link href={'/'} className={'flex items-center gap-4'}>
           <Image src={Logo} alt={'logo'} />
           <div className={'flex flex-col gap-1'}>
             <Typography
@@ -36,6 +38,10 @@ export const Header = ({ className, ...rest }: HeaderProps) => {
               by nedonebo21
             </Typography>
           </div>
+        </Link>
+
+        <div className={'mx-10 flex-1'}>
+          <SearchInput />
         </div>
 
         <div className={'flex items-center gap-4'}>

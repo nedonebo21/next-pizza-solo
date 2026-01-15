@@ -35,7 +35,7 @@ export const ProductCard = ({ imageUrl, id, name, price }: Props) => {
             <Typography variant={'price'}>{price} ₽</Typography>
           </div>
 
-          <Button variant={'secondary'}>
+          <Button>
             <Plus size={20} className={'mr-1'} />
             Добавить
           </Button>

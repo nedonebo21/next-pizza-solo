@@ -1,7 +1,7 @@
 import { ComponentProps } from 'react'
 import { cn } from '@/shared/lib/utils'
 import { Container } from '@/shared/ui/container'
-import { CategoryFilter } from '@/features/category-filter'
+import { CategoryFilter } from '@/features/category'
 import { SortPopup } from '@/shared/ui/sort-popup'
 
 type TopBarProps = Omit<ComponentProps<'div'>, 'children'>
