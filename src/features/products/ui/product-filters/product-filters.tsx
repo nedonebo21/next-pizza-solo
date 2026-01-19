@@ -8,7 +8,7 @@ import { useIngredientsFilter } from '@/shared/lib/hooks/use-ingredients-filter'
 type ProductFiltersProps = Omit<ComponentProps<'div'>, 'children'>
 
 export const ProductFilters = ({ className, ...rest }: ProductFiltersProps) => {
-  const { ingredients } = useIngredientsFilter()
+  const { ingredients, isLoading } = useIngredientsFilter()
 
   const items = ingredients.map(item => ({ value: String(item.id), label: item.name }))
 
@@ -31,7 +31,7 @@ export const ProductFilters = ({ className, ...rest }: ProductFiltersProps) => {
         </div>
         <RangeSlider step={10} min={100} max={1000} />
       </div>
-      <CheckboxFilterGroup title={'Ингредиенты'} items={items} />
+      <CheckboxFilterGroup title={'Ингредиенты'} items={items} isLoading={isLoading} />
     </div>
   )
 }
