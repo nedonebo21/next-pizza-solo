@@ -5,6 +5,7 @@ import type { FilterCheckboxProps } from '@/shared/ui/filter-checkbox'
 import { FilterCheckbox } from '@/shared/ui/filter-checkbox'
 import { Input } from '@/shared/ui/shadcn/input'
 import { Skeleton } from '@/shared/ui/shadcn/skeleton'
+import { cn } from '@/shared/lib/utils'
 
 type Item = FilterCheckboxProps
 
@@ -63,20 +64,25 @@ export const CheckboxFilterGroup = ({
     : items.slice(0, limit)
 
   return (
-    <div className={className}>
-      <p className="font-bold mb-3">{title}</p>
+    <div className={cn('py-6', className)}>
+      <p className={'font-bold mb-3'}>{title}</p>
 
       {showAll && (
-        <div className="mb-5">
+        <div className={'mb-5'}>
           <Input
             onChange={handleInputChange}
             placeholder={searchInputPlaceholder}
-            className="bg-gray-50 border-none"
+            className={'bg-gray-50 border-none'}
           />
         </div>
       )}
 
-      <div className="flex flex-col gap-4 max-h-96 pr-2 overflow-y-auto scrollbar">
+      <div
+        className={cn(
+          'flex flex-col gap-4 max-h-96 pr-2 overflow-y-auto scrollbar',
+          !showAll && 'overflow-y-hidden'
+        )}
+      >
         {list.map((item, index) => (
           <FilterCheckbox
             key={`${index}-${item.value}`}
@@ -90,7 +96,7 @@ export const CheckboxFilterGroup = ({
 
       {shouldShowButton && (
         <div className={showAll ? 'border-t border-t-neutral-100 mt-4' : ''}>
-          <button onClick={toggleShowAll} className="text-primary mt-3">
+          <button onClick={toggleShowAll} className={'text-primary mt-3'}>
             {showAll ? 'Скрыть' : '+ Показать все'}
           </button>
         </div>

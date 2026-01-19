@@ -23,9 +23,10 @@ export const CategoryFilter = ({ className, ...rest }: CategoryFilterProps) => {
     <div className={cn('inline-flex gap-1 bg-gray-50 rounded-2xl', className)} {...rest}>
       {cats.map(({ name, id }, index) => {
         return (
-          <a key={id} href={`/#${name}`} className={'flex items-center h-11 rounded-2xl px-5'}>
+          <a key={id} href={`/#${name}`} className={'flex items-center h-11 rounded-2xl px-3'}>
             <Button
               className={cn(
+                'rounded-2xl',
                 activeCategoryId === index + 1
                   ? 'bg-white text-primary shadow-md shadow-gray-200'
                   : 'bg-gray-50 shadow-none'
