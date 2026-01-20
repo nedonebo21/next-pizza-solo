@@ -1,7 +1,7 @@
 'use client'
 
 import { ComponentProps } from 'react'
-import { Typography, RangeSlider, CheckboxFilterGroup, FilterCheckbox } from '@/shared/ui'
+import { Typography, RangeSlider, CheckboxFilterGroup } from '@/shared/ui'
 import { Input } from '@/shared/ui/shadcn/input'
 import { PRICE_MAX, PRICE_MIN, PRICE_STEP } from '@/features/products/model/constants'
 import { useIngredients } from '@/features/products/model/use-ingredients'

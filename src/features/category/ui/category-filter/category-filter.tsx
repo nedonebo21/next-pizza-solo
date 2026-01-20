@@ -4,24 +4,17 @@ import { ComponentProps } from 'react'
 import { cn } from '@/shared/lib/utils'
 import { Button } from '@/shared/ui/shadcn/button'
 import { useCategoryStore } from '@/features/category'
+import { Category } from '@prisma/client'
 
-type CategoryFilterProps = Omit<ComponentProps<'div'>, 'children'>
+type CategoryFilterProps = {
+  categories: Category[]
+} & Omit<ComponentProps<'div'>, 'children'>
 
-const cats = [
-  { id: 1, name: 'Пиццы' },
-  { id: 2, name: 'Комбо' },
-  { id: 3, name: 'Закуски' },
-  { id: 4, name: 'Коктейли' },
-  { id: 5, name: 'Кофе' },
-  { id: 6, name: 'Напитки' },
-  { id: 7, name: 'Десерты' },
-]
-
-export const CategoryFilter = ({ className, ...rest }: CategoryFilterProps) => {
+export const CategoryFilter = ({ className, categories, ...rest }: CategoryFilterProps) => {
   const activeCategoryId = useCategoryStore(state => state.activeId)
   return (
     <div className={cn('inline-flex gap-1 bg-gray-50 rounded-2xl', className)} {...rest}>
-      {cats.map(({ name, id }, index) => {
+      {categories.map(({ name, id }, index) => {
         return (
           <a key={id} href={`/#${name}`} className={'flex items-center h-11 rounded-2xl px-3'}>
             <Button

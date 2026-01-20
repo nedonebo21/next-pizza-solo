@@ -16,8 +16,6 @@ export const Home = async () => {
     },
   })
 
-  console.log(categories)
-
   return (
     <>
       <Container className={'mt-10'}>
@@ -25,7 +23,7 @@ export const Home = async () => {
           Все пиццы
         </Typography>
       </Container>
-      <TopBar />
+      <TopBar categories={categories.filter(category => category.products.length > 0)} />
       <Container className={'mt-9 pb-14'}>
         <div className={'flex gap-15'}>
           <div className={'w-[250px]'}>
