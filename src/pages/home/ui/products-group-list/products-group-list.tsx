@@ -38,7 +38,7 @@ export const ProductsGroupList = ({ items, title, categoryId, className }: Props
             key={product.id}
             id={product.id}
             name={product.name}
-            price={product.items[0].price}
+            price={product.variants[0]?.price}
             imageUrl={product.imageUrl}
           />
         ))}
