@@ -64,7 +64,7 @@ export const CheckboxFilterGroup = ({
     : items.slice(0, limit)
 
   return (
-    <div className={cn('py-6', className)}>
+    <div className={className}>
       <p className={'font-bold mb-3'}>{title}</p>
 
       {showAll && (

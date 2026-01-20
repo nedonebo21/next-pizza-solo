@@ -24,15 +24,12 @@ export const ProductFilters = ({ className, ...rest }: ProductFiltersProps) => {
 
   return (
     <div className={className} {...rest}>
-      <Typography className={'mb-7'} variant={'subtitle'} textAlign={'left'}>
+      <Typography className={'mb-5'} variant={'subtitle'} textAlign={'left'}>
         Фильтрация
       </Typography>
-      <div className={'flex flex-col gap-4'}>
-        <FilterCheckbox label={'Можно собирать'} value={'1'} />
-        <FilterCheckbox label={'Новинки'} value={'2'} />
-      </div>
 
       <CheckboxFilterGroup
+        className={'mb-5'}
         title={'Тип теста'}
         items={[
           { label: 'Тонкое', value: '1' },
@@ -43,6 +40,7 @@ export const ProductFilters = ({ className, ...rest }: ProductFiltersProps) => {
       />
 
       <CheckboxFilterGroup
+        className={'mb-5'}
         title={'Размеры'}
         items={[
           { label: '20см', value: '20' },
@@ -84,6 +82,7 @@ export const ProductFilters = ({ className, ...rest }: ProductFiltersProps) => {
         />
       </div>
       <CheckboxFilterGroup
+        className={'mt-5'}
         title={'Ингредиенты'}
         onCheckboxClick={filters.setSelectedIngredients}
         selectedItems={filters.selectedIngredients}
