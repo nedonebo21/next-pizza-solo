@@ -1,58 +1,26 @@
 'use client'
 
 import { ComponentProps } from 'react'
-import { useState, useEffect } from 'react'
 import { Typography, RangeSlider, CheckboxFilterGroup, FilterCheckbox } from '@/shared/ui'
 import { Input } from '@/shared/ui/shadcn/input'
-import { useIngredientsFilter } from '@/features/products/model/use-ingredients-filter'
 import { PRICE_MAX, PRICE_MIN, PRICE_STEP } from '@/features/products/model/constants'
-import { useSet } from 'react-use'
-import qs from 'qs'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useIngredients } from '@/features/products/model/use-ingredients'
+import { useFilters } from '@/features/products/model/use-filters'
+import { useQueryFilters } from '@/features/products/model/use-query-filters'
 
 type ProductFiltersProps = Omit<ComponentProps<'div'>, 'children'>
 
-type PriceRange = {
-  min?: number
-  max?: number
-}
-
 export const ProductFilters = ({ className, ...rest }: ProductFiltersProps) => {
-  const searchParams = useSearchParams()
-  const router = useRouter()
-
-  const { ingredients, isLoading, selectedIngredients, onToggleId } = useIngredientsFilter(
-    searchParams?.get('ingredients')?.split(',') || []
-  )
-  const [sizes, { toggle: toggleSizes }] = useSet(
-    new Set<string>(searchParams?.get('sizes')?.split(',') || [])
-  )
-  const [pizzaTypes, { toggle: togglePizzaTypes }] = useSet(
-    new Set<string>(searchParams?.get('pizzaTypes')?.split(',') || [])
-  )
-
-  const [priceRange, setPriceRange] = useState<PriceRange>({
-    min: Number(searchParams?.get('min')) || PRICE_MIN,
-    max: Number(searchParams?.get('max')) || PRICE_MAX,
-  })
+  const { ingredients, isLoading } = useIngredients()
+  const filters = useFilters()
+  useQueryFilters(filters)
 
   const items = ingredients.map(item => ({ value: String(item.id), label: item.name }))
 
-  const handlePriceChange = (name: keyof PriceRange, value: number) => {
-    setPriceRange(prev => ({ ...prev, [name]: value }))
+  const updatePrices = (prices: number[]) => {
+    filters.setPriceRange('min', prices[0])
+    filters.setPriceRange('max', prices[1])
   }
-
-  useEffect(() => {
-    const filters = {
-      ...priceRange,
-      pizzaTypes: Array.from(pizzaTypes),
-      sizes: Array.from(sizes),
-      ingredients: Array.from(selectedIngredients),
-    }
-
-    const query = qs.stringify(filters, { arrayFormat: 'comma' })
-    router.push(`?${query}`, { scroll: false })
-  }, [priceRange, pizzaTypes, sizes, selectedIngredients, router])
 
   return (
     <div className={className} {...rest}>
@@ -70,8 +38,8 @@ export const ProductFilters = ({ className, ...rest }: ProductFiltersProps) => {
           { label: 'Тонкое', value: '1' },
           { label: 'Традиционное', value: '2' },
         ]}
-        onCheckboxClick={togglePizzaTypes}
-        selectedItems={pizzaTypes}
+        onCheckboxClick={filters.setPizzaTypes}
+        selectedItems={filters.pizzaTypes}
       />
 
       <CheckboxFilterGroup
@@ -81,8 +49,8 @@ export const ProductFilters = ({ className, ...rest }: ProductFiltersProps) => {
           { label: '30см', value: '30' },
           { label: '40см', value: '40' },
         ]}
-        onCheckboxClick={toggleSizes}
-        selectedItems={sizes}
+        onCheckboxClick={filters.setSizes}
+        selectedItems={filters.sizes}
       />
 
       <div className={'mt-5 border-y border-y-neutral-100 py-6 pb-7'}>
@@ -92,33 +60,33 @@ export const ProductFilters = ({ className, ...rest }: ProductFiltersProps) => {
         <div className={'flex gap-4 mb-7'}>
           <Input
             type={'number'}
-            onChange={e => handlePriceChange('min', Number(e.target.value))}
+            onChange={e => filters.setPriceRange('min', Number(e.target.value))}
             placeholder={`${PRICE_MIN}`}
             min={PRICE_MIN}
             max={PRICE_MAX}
-            value={String(priceRange.min)}
+            value={String(filters.priceRange.min)}
           />
           <Input
             type={'number'}
-            onChange={e => handlePriceChange('max', Number(e.target.value))}
+            onChange={e => filters.setPriceRange('max', Number(e.target.value))}
             placeholder={`${PRICE_MAX}`}
             min={PRICE_MIN}
             max={PRICE_MAX}
-            value={String(priceRange.max)}
+            value={String(filters.priceRange.max)}
           />
         </div>
         <RangeSlider
           step={PRICE_STEP}
           min={PRICE_MIN}
           max={PRICE_MAX}
-          values={[priceRange.min ?? PRICE_MIN, priceRange.max ?? PRICE_MAX]}
-          onValueChange={([min, max]) => setPriceRange({ min, max })}
+          values={[filters.priceRange.min ?? PRICE_MIN, filters.priceRange.max ?? PRICE_MAX]}
+          onValueChange={updatePrices}
         />
       </div>
       <CheckboxFilterGroup
         title={'Ингредиенты'}
-        onCheckboxClick={onToggleId}
-        selectedItems={selectedIngredients}
+        onCheckboxClick={filters.setSelectedIngredients}
+        selectedItems={filters.selectedIngredients}
         items={items}
         isLoading={isLoading}
       />
