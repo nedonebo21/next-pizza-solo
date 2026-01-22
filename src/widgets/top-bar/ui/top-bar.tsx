@@ -1,7 +1,7 @@
 import { ComponentProps } from 'react'
 import { cn } from '@/shared/lib/utils'
 import { Container } from '@/shared/ui/container'
-import { CategoryFilter } from '@/features/category'
+import { FilterCategory } from '@/features/category'
 import { SortPopup } from '@/shared/ui/sort-popup'
 import { Category } from '@prisma/client'
 
@@ -16,7 +16,7 @@ export const TopBar = ({ className, categories, ...rest }: TopBarProps) => {
       {...rest}
     >
       <Container className={'flex items-center justify-between'}>
-        <CategoryFilter categories={categories} />
+        <FilterCategory categories={categories} />
         <SortPopup />
       </Container>
     </div>

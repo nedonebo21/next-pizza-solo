@@ -19,7 +19,7 @@ export const ProductPage = async ({ params: { id } }: { params: { id: string } }
         <ProductImage imageUrl={product.imageUrl} size={40} />
 
         <div className={'w-[490px] bg-[#f7f6f5] p-7'}>
-          <Typography textAlign={'left'} variant={'title'} as={'h2'}>
+          <Typography className={'mb-1'} textAlign={'left'} variant={'title'} as={'h2'}>
             {product.name}
           </Typography>
           <Typography

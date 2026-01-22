@@ -10,7 +10,7 @@ import { Button } from '@/shared/ui/shadcn/button'
 import type { ComponentProps } from 'react'
 import { Typography } from '@/shared/ui/typography'
 import Link from 'next/link'
-import { SearchInput } from '@/shared/ui'
+import { SearchProducts } from '@/features/products'
 
 type HeaderProps = Omit<ComponentProps<'header'>, 'children'>
 
@@ -41,7 +41,7 @@ export const Header = ({ className, ...rest }: HeaderProps) => {
         </Link>
 
         <div className={'mx-10 flex-1'}>
-          <SearchInput />
+          <SearchProducts />
         </div>
 
         <div className={'flex items-center gap-4'}>

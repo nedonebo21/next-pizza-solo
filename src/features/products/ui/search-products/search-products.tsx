@@ -12,7 +12,7 @@ import { Product } from '@prisma/client'
 
 type SearchInputProps = Omit<ComponentProps<'input'>, 'children'>
 
-export const SearchInput = ({ className, ...rest }: SearchInputProps) => {
+export const SearchProducts = ({ className, ...rest }: SearchInputProps) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [focused, setFocused] = useState(false)
   const [products, setProducts] = useState<Product[]>([])
