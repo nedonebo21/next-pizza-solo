@@ -10,7 +10,7 @@ import { useQueryFilters } from '@/features/products/model/use-query-filters'
 
 type ProductFiltersProps = Omit<ComponentProps<'div'>, 'children'>
 
-export const ProductFilters = ({ className, ...rest }: ProductFiltersProps) => {
+export const FilterProducts = ({ className, ...rest }: ProductFiltersProps) => {
   const { ingredients, isLoading } = useIngredients()
   const filters = useFilters()
   useQueryFilters(filters)

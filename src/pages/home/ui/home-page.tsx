@@ -1,6 +1,6 @@
 import { Container, Typography } from '@/shared/ui'
 import { TopBar } from '@/widgets/top-bar'
-import { ProductFilters } from '@/features/products'
+import { FilterProducts } from '@/features/products'
 import { ProductsGroupList } from '@/pages/home/ui/products-group-list/products-group-list'
 import { prisma } from '../../../../prisma/prisma-client'
 
@@ -27,7 +27,7 @@ export const Home = async () => {
       <Container className={'mt-9 pb-14'}>
         <div className={'flex gap-15'}>
           <div className={'w-[250px]'}>
-            <ProductFilters />
+            <FilterProducts />
           </div>
           <div className={'flex-1'}>
             <div className={'flex flex-col gap-12'}>

@@ -1,2 +1,2 @@
-export { CategoryFilter } from './ui/category-filter/category-filter'
+export { FilterCategory } from '@/features/category/ui/filter-category/filter-category'
 export { useCategoryStore } from './model/category'
