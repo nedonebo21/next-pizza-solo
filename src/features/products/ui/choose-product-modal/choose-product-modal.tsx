@@ -20,7 +20,7 @@ export const ChooseProductModal = ({ product, className }: ChooseProductProps) =
     <Dialog open={!!product} onOpenChange={() => router.back()}>
       <DialogContent
         className={cn(
-          'p-0 w-[1060px] max-w-[1065px] min-h-[500px] bg-white overflow-hidden',
+          'p-0 w-[1060px] max-w-[1065px] min-h-[550px] bg-white overflow-hidden',
           className
         )}
       >
@@ -29,6 +29,7 @@ export const ChooseProductModal = ({ product, className }: ChooseProductProps) =
             name={product.name}
             imageUrl={product.imageUrl}
             ingredients={product.ingredients}
+            variants={product.variants}
           />
         ) : (
           <ChooseProductForm name={product.name} imageUrl={product.imageUrl} />
