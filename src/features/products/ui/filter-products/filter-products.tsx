@@ -7,6 +7,7 @@ import { PRICE_MAX, PRICE_MIN, PRICE_STEP } from '@/features/products/model/cons
 import { useIngredients } from '@/features/products/model/use-ingredients'
 import { useFilters } from '@/features/products/model/use-filters'
 import { useQueryFilters } from '@/features/products/model/use-query-filters'
+import { pizzaSizesItems, pizzaTypesItems } from '@/entities/product'
 
 type ProductFiltersProps = Omit<ComponentProps<'div'>, 'children'>
 
@@ -31,10 +32,7 @@ export const FilterProducts = ({ className, ...rest }: ProductFiltersProps) => {
       <CheckboxFilterGroup
         className={'mb-5'}
         title={'Тип теста'}
-        items={[
-          { label: 'Тонкое', value: '1' },
-          { label: 'Традиционное', value: '2' },
-        ]}
+        items={pizzaTypesItems}
         onCheckboxClick={filters.setPizzaTypes}
         selectedItems={filters.pizzaTypes}
       />
@@ -42,11 +40,7 @@ export const FilterProducts = ({ className, ...rest }: ProductFiltersProps) => {
       <CheckboxFilterGroup
         className={'mb-5'}
         title={'Размеры'}
-        items={[
-          { label: '20см', value: '20' },
-          { label: '30см', value: '30' },
-          { label: '40см', value: '40' },
-        ]}
+        items={pizzaSizesItems}
         onCheckboxClick={filters.setSizes}
         selectedItems={filters.sizes}
       />

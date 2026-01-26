@@ -1,6 +1,7 @@
 import { prisma } from '../../../../prisma/prisma-client'
 import { notFound } from 'next/navigation'
 import { Container, GroupVariants, ProductImage, Typography } from '@/shared/ui'
+import { pizzaSizes } from '@/entities/product'
 
 export const ProductPage = async ({ params: { id } }: { params: { id: string } }) => {
   const product = await prisma.product.findFirst({
@@ -30,14 +31,7 @@ export const ProductPage = async ({ params: { id } }: { params: { id: string } }
             Lorem ipsum dolor sit amet, consectetur
           </Typography>
 
-          <GroupVariants
-            selectedValue={'2'}
-            items={[
-              { name: 'Маленькая', value: '1' },
-              { name: 'Средняя', value: '2' },
-              { name: 'Большая', value: '3', disabled: true },
-            ]}
-          />
+          <GroupVariants items={pizzaSizes} />
         </div>
       </div>
     </Container>
