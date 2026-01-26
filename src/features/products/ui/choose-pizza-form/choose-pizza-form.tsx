@@ -64,16 +64,21 @@ export const ChoosePizzaForm = ({
         </div>
         <div className={'bg-gray-50 p-5 rounded-md h-[420px] overflow-auto scrollbar mt-5'}>
           <div className={'grid grid-cols-3 gap-3'}>
-            {ingredients.map(ingredient => (
-              <IngredientItem
-                key={ingredient.id}
-                name={ingredient.name}
-                price={ingredient.price}
-                imageUrl={ingredient.imageUrl}
-                active={selectedIngredients.has(ingredient.id)}
-                onClick={() => addIngredient(ingredient.id)}
-              />
-            ))}
+            {ingredients.map(ingredient => {
+              const isActive = selectedIngredients.has(ingredient.id)
+              const handleIngredientAdd = () => addIngredient(ingredient.id)
+
+              return (
+                <IngredientItem
+                  key={ingredient.id}
+                  name={ingredient.name}
+                  price={ingredient.price}
+                  imageUrl={ingredient.imageUrl}
+                  active={isActive}
+                  onClick={handleIngredientAdd}
+                />
+              )
+            })}
           </div>
         </div>
         <Button className={'h-[55px] px-10 text-base rounded-[18px] w-full mt-10'}>
