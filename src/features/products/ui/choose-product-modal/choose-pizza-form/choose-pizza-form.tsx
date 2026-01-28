@@ -1,10 +1,9 @@
 import { cn } from '@/shared/lib/utils'
 import { GroupVariants, IngredientItem, ProductImage, Typography } from '@/shared/ui'
 import { Button } from '@/shared/ui/shadcn/button'
-import { useState } from 'react'
 import { Ingredient, ProductVariant } from '@prisma/client'
-import { useSet } from 'react-use'
-import { PizzaSize, pizzaSizes, PizzaType, pizzaTypes } from '@/entities/product'
+import { PizzaSize, PizzaType, pizzaTypes } from '@/entities/product'
+import { getPizzaDetails, usePizzaOptions } from '../../../model'
 
 type ChoosePizzaFormProps = {
   className?: string
@@ -23,12 +22,16 @@ export const ChoosePizzaForm = ({
   variants,
   onAddToCart,
 }: ChoosePizzaFormProps) => {
-  const [size, setSize] = useState<PizzaSize>(20)
-  const [type, setType] = useState<PizzaType>(1)
+  const { type, setType, size, setSize, availableSizes, selectedIngredients, addIngredient } =
+    usePizzaOptions(variants)
 
-  const [selectedIngredients, { toggle: addIngredient }] = useSet(new Set<number>([]))
-
-  const details = '30см, традиционное тесто'
+  const { totalPrice, textDetails } = getPizzaDetails(
+    type,
+    size,
+    variants,
+    ingredients,
+    selectedIngredients
+  )
 
   const handleSizeChange = (size: string) => {
     setSize(Number(size) as PizzaSize)
@@ -38,14 +41,9 @@ export const ChoosePizzaForm = ({
     setType(Number(type) as PizzaType)
   }
 
-  const pizzaPrice =
-    variants.find(variant => variant.pizzaType === type && variant.size === size)?.price ?? 0
-
-  const ingredientsPrice = ingredients
-    .filter(ingredient => selectedIngredients.has(ingredient.id))
-    .reduce((acc, ingredient) => acc + ingredient.price, 0)
-
-  const totalPrice = pizzaPrice + ingredientsPrice
+  const handleAddToCard = () => {
+    onAddToCart?.()
+  }
 
   return (
     <div className={cn('flex flex-1', className)}>
@@ -56,10 +54,10 @@ export const ChoosePizzaForm = ({
           {name}
         </Typography>
         <Typography className={'text-gray-400'} variant={'bodySemiBold'} textAlign={'left'}>
-          {details}
+          {textDetails}
         </Typography>
         <div className={'flex flex-col gap-4 mt-5'}>
-          <GroupVariants items={pizzaSizes} value={String(size)} onClick={handleSizeChange} />
+          <GroupVariants items={availableSizes} value={String(size)} onClick={handleSizeChange} />
           <GroupVariants items={pizzaTypes} value={String(type)} onClick={handleTypeChange} />
         </div>
         <div className={'bg-gray-50 p-5 rounded-md h-[420px] overflow-auto scrollbar mt-5'}>
@@ -81,7 +79,10 @@ export const ChoosePizzaForm = ({
             })}
           </div>
         </div>
-        <Button className={'h-[55px] px-10 text-base rounded-[18px] w-full mt-10'}>
+        <Button
+          className={'h-[55px] px-10 text-base rounded-[18px] w-full mt-10'}
+          onClick={handleAddToCard}
+        >
           Добавить в корзину за {totalPrice} ₽
         </Button>
       </div>
