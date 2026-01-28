@@ -1,8 +1,7 @@
 import { ComponentProps } from 'react'
 import { cn } from '@/shared/lib/utils'
-import { Container } from '@/shared/ui/container'
+import { Container, SortPopup } from '@/shared/ui'
 import { FilterCategory } from '@/features/category'
-import { SortPopup } from '@/shared/ui/sort-popup'
 import { Category } from '@prisma/client'
 
 type TopBarProps = {

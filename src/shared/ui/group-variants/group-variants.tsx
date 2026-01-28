@@ -3,7 +3,7 @@
 import { cn } from '@/shared/lib/utils'
 import { Typography } from '@/shared/ui'
 
-type Variant = {
+export type Variant = {
   name: string
   value: string
   disabled?: boolean

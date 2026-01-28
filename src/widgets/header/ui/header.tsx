@@ -4,11 +4,10 @@ import Image from 'next/image'
 
 import Logo from '@/shared/assets/images/logo.png'
 import { cn } from '@/shared/lib/utils'
-import { Container } from '@/shared/ui/container'
 import { Button } from '@/shared/ui/shadcn/button'
 
 import type { ComponentProps } from 'react'
-import { Typography } from '@/shared/ui/typography'
+import { Typography, Container } from '@/shared/ui'
 import Link from 'next/link'
 import { SearchProducts } from '@/features/products'
 
