@@ -1,7 +1,7 @@
 import { Container, Typography } from '@/shared/ui'
 import { TopBar } from '@/widgets/top-bar'
-import { FilterProducts } from '@/features/products'
-import { ProductsGroupList } from '@/pages/home/ui/products-group-list/products-group-list'
+import { FilterProducts } from '@/features/browse-products'
+import { ProductsGroupList } from './products-group-list'
 import { prisma } from '../../../../prisma/prisma-client'
 
 export const Home = async () => {

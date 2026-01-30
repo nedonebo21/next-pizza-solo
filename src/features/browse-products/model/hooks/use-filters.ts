@@ -1,8 +1,8 @@
 import { useSearchParams } from 'next/navigation'
 import { useSet } from 'react-use'
 import { useState } from 'react'
-import { PRICE_MAX, PRICE_MIN } from '@/features/products/model/constants'
-import { Filters, PriceRange } from '@/features/products/model/types'
+import { PRICE_MAX, PRICE_MIN } from '@/features/browse-products/model/constants'
+import { Filters, PriceRange } from '@/features/browse-products/model/types'
 
 type QueryFilters = PriceRange & {
   pizzaTypes: string

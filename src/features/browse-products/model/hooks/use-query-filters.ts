@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import qs from 'qs'
-import { Filters } from '@/features/products/model/types'
+import { Filters } from '@/features/browse-products/model/types'
 import { useRouter } from 'next/navigation'
 
 export const useQueryFilters = (filters: Filters) => {

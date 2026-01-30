@@ -1,6 +1,6 @@
 import { prisma } from '../../../../../prisma/prisma-client'
 import { notFound } from 'next/navigation'
-import { ChooseProductModal } from '@/features/products'
+import { ChooseProductModal } from '@/features/browse-products'
 
 export default async function ProductModal({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = await params

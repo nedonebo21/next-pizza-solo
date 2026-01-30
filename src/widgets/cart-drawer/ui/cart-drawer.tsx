@@ -17,11 +17,10 @@ import { CartDrawerItem } from './cart-drawer-item'
 import { getCartItemDetails } from '@/features/manage-cart'
 
 type CartDrawerProps = {
-  className?: string
   children: ReactNode
 }
 
-export const CartDrawer = ({ className, children }: CartDrawerProps) => {
+export const CartDrawer = ({ children }: CartDrawerProps) => {
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>

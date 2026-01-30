@@ -4,8 +4,8 @@ import { Dialog, DialogContent } from '@/shared/ui/shadcn/dialog'
 import { useRouter } from 'next/navigation'
 import { cn } from '@/shared/lib/utils'
 import { ProductWithRelations } from '@/entities/product'
-import { ChoosePizzaForm } from './choose-pizza-form/choose-pizza-form'
-import { ChooseProductForm } from './choose-product-form/choose-product-form'
+import { ChoosePizzaForm } from './choose-pizza-form'
+import { ChooseProductForm } from './choose-product-form'
 
 type ChooseProductProps = {
   product: ProductWithRelations

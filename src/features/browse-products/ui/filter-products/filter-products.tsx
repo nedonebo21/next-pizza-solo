@@ -3,10 +3,10 @@
 import { ComponentProps } from 'react'
 import { Typography, RangeSlider, CheckboxFilterGroup } from '@/shared/ui'
 import { Input } from '@/shared/ui/shadcn/input'
-import { PRICE_MAX, PRICE_MIN, PRICE_STEP } from '@/features/products/model/constants'
-import { useIngredients } from '@/features/products/model/hooks/use-ingredients'
-import { useFilters } from '@/features/products/model/hooks/use-filters'
-import { useQueryFilters } from '@/features/products/model/hooks/use-query-filters'
+import { PRICE_MAX, PRICE_MIN, PRICE_STEP } from '@/features/browse-products/model/constants'
+import { useIngredients } from '@/features/browse-products/model/hooks/use-ingredients'
+import { useFilters } from '@/features/browse-products/model/hooks/use-filters'
+import { useQueryFilters } from '@/features/browse-products/model/hooks/use-query-filters'
 import { pizzaSizesItems, pizzaTypesItems } from '@/entities/product'
 
 type ProductFiltersProps = Omit<ComponentProps<'div'>, 'children'>

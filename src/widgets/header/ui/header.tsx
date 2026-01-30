@@ -1,5 +1,4 @@
-import { Separator } from '@radix-ui/react-select'
-import { ArrowRight, ShoppingCart, User } from 'lucide-react'
+import { User } from 'lucide-react'
 import Image from 'next/image'
 
 import Logo from '@/shared/assets/images/logo.png'
@@ -9,7 +8,8 @@ import { Button } from '@/shared/ui/shadcn/button'
 import type { ComponentProps } from 'react'
 import { Typography, Container } from '@/shared/ui'
 import Link from 'next/link'
-import { SearchProducts } from '@/features/products'
+import { SearchProducts } from '@/features/browse-products'
+import { CartButton } from '@/widgets/cart-drawer'
 
 type HeaderProps = Omit<ComponentProps<'header'>, 'children'>
 
@@ -48,22 +48,7 @@ export const Header = ({ className, ...rest }: HeaderProps) => {
             <User /> Войти
           </Button>
           <div>
-            <Button className={'group relative flex items-center'}>
-              <Typography variant={'bodyBold'}>520 ₽</Typography>
-              <Separator className={'h-full w-[1px] bg-white/30 mx-3'} />
-              <div
-                className={'flex items-center gap-2 transition duration-300 group-hover:opacity-0'}
-              >
-                <ShoppingCart size={16} />
-                <Typography variant={'bodyBold'}>3</Typography>
-              </div>
-              <ArrowRight
-                size={20}
-                className={
-                  'w-5 absolute right-7 transition duration-300 -translate-x-2  opacity-0 group-hover:opacity-100 group-hover:translate-x-0'
-                }
-              />
-            </Button>
+            <CartButton />
           </div>
         </div>
       </Container>

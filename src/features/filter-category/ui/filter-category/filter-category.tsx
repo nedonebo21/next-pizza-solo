@@ -3,7 +3,7 @@
 import { ComponentProps } from 'react'
 import { cn } from '@/shared/lib/utils'
 import { Button } from '@/shared/ui/shadcn/button'
-import { useCategoryStore } from '@/features/category'
+import { useCategoryStore } from '@/features/filter-category'
 import { Category } from '@prisma/client'
 
 type CategoryFilterProps = {
