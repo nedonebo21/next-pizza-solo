@@ -3,7 +3,7 @@ import { Separator } from '@radix-ui/react-select'
 import { ArrowRight, ShoppingCart } from 'lucide-react'
 import { Button } from '@/shared/ui/shadcn/button'
 import { cn } from '@/shared/lib/utils'
-import { CartDrawer } from '@/widgets/cart-drawer/cart-drawer'
+import { CartDrawer } from './cart-drawer'
 
 type CartButtonProps = {
   className?: string

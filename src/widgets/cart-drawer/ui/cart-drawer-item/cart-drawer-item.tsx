@@ -8,6 +8,7 @@ import { Trash2Icon } from 'lucide-react'
 
 type CartDrawerItemProps = CartItemProps & {
   className?: string
+  onQuantityUpdate: (type: 'plus' | 'minus') => void
 }
 
 export const CartDrawerItem = ({
@@ -18,6 +19,7 @@ export const CartDrawerItem = ({
   quantity,
   details,
   imageUrl,
+  onQuantityUpdate,
 }: CartDrawerItemProps) => {
   return (
     <div className={cn('flex bg-white p-5 gap-6', className)}>
@@ -29,7 +31,7 @@ export const CartDrawerItem = ({
         <hr className={'my-3'} />
 
         <div className={'flex items-center justify-between'}>
-          <CountButton value={quantity} />
+          <CountButton value={quantity} onClick={onQuantityUpdate} />
 
           <div className={'flex items-center gap-3'}>
             <CartItemPrice value={price} />
