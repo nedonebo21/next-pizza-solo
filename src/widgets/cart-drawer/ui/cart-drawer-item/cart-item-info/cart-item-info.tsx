@@ -9,11 +9,15 @@ export const CartItemInfo = ({ name, details }: CartItemInfoProps) => {
   return (
     <div>
       <div className={'flex items-center justify-between'}>
-        <Typography className="text-lg font-bold flex-1 leading-6" as={'h2'}>
+        <Typography textAlign={'left'} className="text-lg font-bold flex-1 leading-6" as={'h2'}>
           {name}
         </Typography>
       </div>
-      {details && <Typography className="text-xs text-gray-400 w-[90%]">{details}</Typography>}
+      {details && (
+        <Typography textAlign={'left'} className="text-xs text-gray-400 w-[90%]">
+          {details}
+        </Typography>
+      )}
     </div>
   )
 }
