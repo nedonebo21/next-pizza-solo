@@ -8,19 +8,41 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/shared/ui/shadcn/sheet'
-import { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
 import { Typography } from '@/shared/ui'
 import Link from 'next/link'
 import { Button } from '@/shared/ui/shadcn/button'
 import { ArrowRight } from 'lucide-react'
 import { CartDrawerItem } from './cart-drawer-item'
-import { getCartItemDetails } from '@/features/manage-cart'
+import { getCartItemDetails, useCartStore } from '@/features/manage-cart'
+import { PizzaSize, PizzaType } from '@/entities/product'
+import { useShallow } from 'zustand/shallow'
 
 type CartDrawerProps = {
   children: ReactNode
 }
 
 export const CartDrawer = ({ children }: CartDrawerProps) => {
+  const [totalAmount, fetchCartItems, updateQuantity, items] = useCartStore(
+    useShallow(state => [
+      state.totalAmount,
+      state.fetchCartItems,
+      state.updateItemQuantity,
+      state.items,
+    ])
+  )
+
+  useEffect(() => {
+    fetchCartItems()
+  }, [])
+
+  const handleQuantityUpdate = (id: number, quantity: number, type: 'plus' | 'minus') => {
+    const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1
+    updateQuantity(id, newQuantity)
+  }
+
+  const itemsCount = items.length
+
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
@@ -29,24 +51,37 @@ export const CartDrawer = ({ children }: CartDrawerProps) => {
           <SheetTitle>
             В корзине&nbsp;
             <Typography variant={'bodyBold'} as={'span'}>
-              3 товара
+              {itemsCount} товара
             </Typography>
           </SheetTitle>
         </SheetHeader>
 
         <div className={'-mx-6 mt-5 overflow-auto scrollbar flex-1 gap-2'}>
-          <div className={'mb-2'}>
-            <CartDrawerItem
-              id={1}
-              imageUrl={
-                'https://media.dodostatic.net/image/r:584x584/019bcbc9b40370a4b47c6298dcac292a.avif'
-              }
-              name={'Чоризо фреш'}
-              price={500}
-              quantity={1}
-              details={getCartItemDetails(2, 30, [])}
-            />
-          </div>
+          {items.map(item => {
+            const isPizza = item.pizzaSize && item.pizzaType
+
+            return (
+              <div className={'mb-2'} key={item.id}>
+                <CartDrawerItem
+                  id={item.id}
+                  imageUrl={item.imageUrl}
+                  name={item.name}
+                  price={item.price}
+                  quantity={item.quantity}
+                  details={
+                    isPizza
+                      ? getCartItemDetails(
+                          item.pizzaType as PizzaType,
+                          item.pizzaSize as PizzaSize,
+                          item.ingredients
+                        )
+                      : ''
+                  }
+                  onQuantityUpdate={type => handleQuantityUpdate(item.id, item.quantity, type)}
+                />
+              </div>
+            )
+          })}
         </div>
 
         <SheetFooter className={'-mx-6 bg-white p-8'}>
@@ -60,7 +95,7 @@ export const CartDrawer = ({ children }: CartDrawerProps) => {
                   }
                 />
               </span>
-              <span className={'font-bold text-lg'}>500 ₽</span>
+              <span className={'font-bold text-lg'}>{totalAmount} ₽</span>
             </div>
 
             <Link href={'/cart'}>
