@@ -9,6 +9,7 @@ import { Trash2Icon } from 'lucide-react'
 type CartDrawerItemProps = CartItemProps & {
   className?: string
   onQuantityUpdate: (type: 'plus' | 'minus') => void
+  onItemRemove: () => void
 }
 
 export const CartDrawerItem = ({
@@ -20,6 +21,7 @@ export const CartDrawerItem = ({
   details,
   imageUrl,
   onQuantityUpdate,
+  onItemRemove,
 }: CartDrawerItemProps) => {
   return (
     <div className={cn('flex bg-white p-5 gap-6', className)}>
@@ -35,7 +37,11 @@ export const CartDrawerItem = ({
 
           <div className={'flex items-center gap-3'}>
             <CartItemPrice value={price} />
-            <Trash2Icon className={'text-gray-400 cursor-pointer hover:text-gray-600'} size={16} />
+            <Trash2Icon
+              onClick={onItemRemove}
+              className={'text-gray-400 cursor-pointer hover:text-gray-600'}
+              size={16}
+            />
           </div>
         </div>
       </div>

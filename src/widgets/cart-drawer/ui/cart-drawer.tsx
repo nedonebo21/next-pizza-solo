@@ -23,12 +23,13 @@ type CartDrawerProps = {
 }
 
 export const CartDrawer = ({ children }: CartDrawerProps) => {
-  const [totalAmount, fetchCartItems, updateQuantity, items] = useCartStore(
+  const [totalAmount, items, fetchCartItems, updateQuantity, removeCartItem] = useCartStore(
     useShallow(state => [
       state.totalAmount,
+      state.items,
       state.fetchCartItems,
       state.updateItemQuantity,
-      state.items,
+      state.removeCartItem,
     ])
   )
 
@@ -78,6 +79,7 @@ export const CartDrawer = ({ children }: CartDrawerProps) => {
                       : ''
                   }
                   onQuantityUpdate={type => handleQuantityUpdate(item.id, item.quantity, type)}
+                  onItemRemove={() => removeCartItem(item.id)}
                 />
               </div>
             )

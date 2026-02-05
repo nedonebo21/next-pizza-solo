@@ -1,4 +1,4 @@
-import { CartStateItem } from './types'
+import { CartStateItem } from '../types'
 import { CartDTO } from '@/shared/services/cart/cart.dto'
 import { calcCartItemPrice } from './calc-cart-item-price'
 
