@@ -104,7 +104,7 @@ model CartItem {
   productVariant   ProductVariant @relation(fields: [productVariantId], references: [id])
   productVariantId Int
 
-  quantity Int
+  quantity Int @default(1)
 
   ingredients Ingredient[]
 

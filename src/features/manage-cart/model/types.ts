@@ -28,3 +28,8 @@ export type CartState = {
   addCartItem: (values: any) => Promise<void>
   removeCartItem: (id: number) => Promise<void>
 }
+
+export type CreateCartItemValues = {
+  productVariantId: number
+  ingredients?: number[]
+}
