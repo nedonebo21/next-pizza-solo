@@ -11,7 +11,7 @@ type ChoosePizzaFormProps = {
   name: string
   ingredients: Ingredient[]
   variants: ProductVariant[]
-  onAddToCart?: () => void
+  onSubmit: (id: number, ingredients: number[]) => void
 }
 
 export const ChoosePizzaForm = ({
@@ -20,10 +20,18 @@ export const ChoosePizzaForm = ({
   name,
   ingredients,
   variants,
-  onAddToCart,
+  onSubmit,
 }: ChoosePizzaFormProps) => {
-  const { type, setType, size, setSize, availableSizes, selectedIngredients, addIngredient } =
-    usePizzaOptions(variants)
+  const {
+    type,
+    setType,
+    size,
+    setSize,
+    availableSizes,
+    selectedIngredients,
+    addIngredient,
+    currentItemId,
+  } = usePizzaOptions(variants)
 
   const { totalPrice, textDetails } = getPizzaDetails(
     type,
@@ -41,8 +49,11 @@ export const ChoosePizzaForm = ({
     setType(Number(type) as PizzaType)
   }
 
-  const handleAddToCard = () => {
-    onAddToCart?.()
+  const handleSubmit = () => {
+    if (!currentItemId) {
+      return
+    }
+    onSubmit(currentItemId, Array.from(selectedIngredients))
   }
 
   return (
@@ -81,7 +92,7 @@ export const ChoosePizzaForm = ({
         </div>
         <Button
           className={'h-[55px] px-10 text-base rounded-[18px] w-full mt-10'}
-          onClick={handleAddToCard}
+          onClick={handleSubmit}
         >
           Добавить в корзину за {totalPrice} ₽
         </Button>

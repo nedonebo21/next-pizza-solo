@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '../../../prisma/prisma-client'
-import { getOrCreateCart, updateCartTotalAmount } from '@/features/manage-cart'
-import type { CreateCartItemValues } from '@/features/manage-cart'
+import { getOrCreateCart, updateCartTotalAmount } from '@/entities/cart'
+import { CreateCartItemValues } from '@/shared/services'
 
 export async function GET(req: NextRequest) {
   try {

@@ -1,5 +1,5 @@
 import { mapPizzaType, PizzaSize, PizzaType } from '@/entities/product'
-import { CartStateItem } from '@/features/manage-cart/model/types'
+import { CartStateItem } from '@/entities/cart/model/types'
 
 export const getCartItemDetails = (
   pizzaType: PizzaType,
