@@ -1,5 +1,5 @@
 import { cn } from '@/shared/lib/utils'
-import type { CartItemProps } from '@/features/manage-cart'
+import type { CartItemProps } from '@/entities/cart'
 import { CartItemImage } from './cart-item-image'
 import { CartItemInfo } from './cart-item-info'
 import { CartItemPrice } from './cart-item-price'

@@ -14,7 +14,7 @@ import Link from 'next/link'
 import { Button } from '@/shared/ui/shadcn/button'
 import { ArrowRight } from 'lucide-react'
 import { CartDrawerItem } from './cart-drawer-item'
-import { getCartItemDetails, useCartStore } from '@/features/manage-cart'
+import { getCartItemDetails, useCartStore } from '@/entities/cart'
 import { PizzaSize, PizzaType } from '@/entities/product'
 import { useShallow } from 'zustand/shallow'
 
