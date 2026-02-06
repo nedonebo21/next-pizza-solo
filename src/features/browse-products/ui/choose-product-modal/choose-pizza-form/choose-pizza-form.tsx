@@ -7,6 +7,7 @@ import { getPizzaDetails, usePizzaOptions } from '../../../model'
 
 type ChoosePizzaFormProps = {
   className?: string
+  isLoading: boolean
   imageUrl: string
   name: string
   ingredients: Ingredient[]
@@ -21,6 +22,7 @@ export const ChoosePizzaForm = ({
   ingredients,
   variants,
   onSubmit,
+  isLoading,
 }: ChoosePizzaFormProps) => {
   const {
     type,
@@ -93,6 +95,7 @@ export const ChoosePizzaForm = ({
         <Button
           className={'h-[55px] px-10 text-base rounded-[18px] w-full mt-10'}
           onClick={handleSubmit}
+          isLoading={isLoading}
         >
           Добавить в корзину за {totalPrice} ₽
         </Button>

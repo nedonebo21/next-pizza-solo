@@ -23,15 +23,17 @@ type CartDrawerProps = {
 }
 
 export const CartDrawer = ({ children }: CartDrawerProps) => {
-  const [totalAmount, items, fetchCartItems, updateQuantity, removeCartItem] = useCartStore(
-    useShallow(state => [
-      state.totalAmount,
-      state.items,
-      state.fetchCartItems,
-      state.updateItemQuantity,
-      state.removeCartItem,
-    ])
-  )
+  const [totalAmount, items, fetchCartItems, updateQuantity, removeCartItem, loading] =
+    useCartStore(
+      useShallow(state => [
+        state.totalAmount,
+        state.items,
+        state.fetchCartItems,
+        state.updateItemQuantity,
+        state.removeCartItem,
+        state.loading,
+      ])
+    )
 
   useEffect(() => {
     fetchCartItems()
@@ -101,7 +103,7 @@ export const CartDrawer = ({ children }: CartDrawerProps) => {
             </div>
 
             <Link href={'/cart'}>
-              <Button className={'w-full h-12 text-base'} type={'submit'}>
+              <Button className={'w-full h-12 text-base'} type={'submit'} isLoading={loading}>
                 Оформить заказ
                 <ArrowRight className={'w-5 ml-2'} />
               </Button>

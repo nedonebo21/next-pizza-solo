@@ -4,6 +4,7 @@ import { Button } from '@/shared/ui/shadcn/button'
 
 type ChoosePizzaFormProps = {
   className?: string
+  isLoading: boolean
   imageUrl: string
   price: number
   name: string
@@ -16,6 +17,7 @@ export const ChooseProductForm = ({
   price,
   name,
   onSubmit,
+  isLoading,
 }: ChoosePizzaFormProps) => {
   return (
     <div className={cn('flex flex-1', className)}>
@@ -26,7 +28,8 @@ export const ChooseProductForm = ({
           {name}
         </Typography>
         <Button
-          onClick={onSubmit}
+          onClick={() => onSubmit()}
+          isLoading={isLoading}
           className={'h-[55px] px-10 text-base rounded-[18px] w-full mt-10'}
         >
           Добавить в корзину за {price} ₽
