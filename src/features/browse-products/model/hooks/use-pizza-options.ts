@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState } from 'react'
 import { PizzaSize, PizzaType } from '@/entities/product'
 import { Variant } from '@/shared/ui'

@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useRef } from 'react'
 import qs from 'qs'
 import { Filters } from '@/features/browse-products/model/types'

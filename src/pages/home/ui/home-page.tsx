@@ -1,21 +1,11 @@
 import { Container, Typography } from '@/shared/ui'
 import { TopBar } from '@/widgets/top-bar'
-import { FilterProducts } from '@/features/browse-products'
+import { FilterProducts, findPizzas, GetSearchParams } from '@/features/browse-products'
 import { ProductsGroupList } from './products-group-list'
-import { prisma } from '../../../../prisma/prisma-client'
 import { Suspense } from 'react'
 
-export const Home = async () => {
-  const categories = await prisma.category.findMany({
-    include: {
-      products: {
-        include: {
-          ingredients: true,
-          variants: true,
-        },
-      },
-    },
-  })
+export const Home = async ({ searchParams }: { searchParams: GetSearchParams }) => {
+  const categories = await findPizzas(searchParams)
 
   return (
     <>
