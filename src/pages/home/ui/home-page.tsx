@@ -3,6 +3,7 @@ import { TopBar } from '@/widgets/top-bar'
 import { FilterProducts } from '@/features/browse-products'
 import { ProductsGroupList } from './products-group-list'
 import { prisma } from '../../../../prisma/prisma-client'
+import { Suspense } from 'react'
 
 export const Home = async () => {
   const categories = await prisma.category.findMany({
@@ -27,7 +28,9 @@ export const Home = async () => {
       <Container className={'mt-9 pb-14'}>
         <div className={'flex gap-15'}>
           <div className={'w-[250px]'}>
-            <FilterProducts />
+            <Suspense>
+              <FilterProducts />
+            </Suspense>
           </div>
           <div className={'flex-1'}>
             <div className={'flex flex-col gap-12'}>
