@@ -1,6 +1,7 @@
 import { cn } from '@/shared/lib/utils'
 import { ProductImage, Typography } from '@/shared/ui'
 import { Button } from '@/shared/ui/shadcn/button'
+import { DialogTitle } from '@/shared/ui/shadcn/dialog'
 
 type ChoosePizzaFormProps = {
   className?: string
@@ -24,9 +25,11 @@ export const ChooseProductForm = ({
       <ProductImage imageUrl={imageUrl} size={20} hasBorders={false} />
 
       <div className={'w-[490px] bg-[#f7f6f5] p-7'}>
-        <Typography className={'mb-1'} variant={'title'} as={'h4'} textAlign={'left'}>
-          {name}
-        </Typography>
+        <DialogTitle>
+          <Typography className={'mb-1'} variant={'title'} as={'span'} textAlign={'left'}>
+            {name}
+          </Typography>
+        </DialogTitle>
         <Button
           onClick={() => onSubmit()}
           isLoading={isLoading}
