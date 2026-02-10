@@ -5,10 +5,11 @@ import { ProductCard } from './product-card'
 import { RefObject, useEffect, useRef } from 'react'
 import { useIntersection } from 'react-use'
 import { useCategoryStore } from '@/features/filter-category'
+import { ProductWithRelations } from '@/entities/product'
 
 type Props = {
   title: string
-  items: any[]
+  items: ProductWithRelations[]
   className?: string
   categoryId: number
 }
@@ -40,6 +41,7 @@ export const ProductsGroupList = ({ items, title, categoryId, className }: Props
             name={product.name}
             price={product.variants[0]?.price}
             imageUrl={product.imageUrl}
+            ingredients={product.ingredients}
           />
         ))}
       </div>

@@ -2,15 +2,17 @@ import Link from 'next/link'
 import { Typography } from '@/shared/ui'
 import { Plus } from 'lucide-react'
 import { Button } from '@/shared/ui/shadcn/button'
+import { Ingredient } from '@prisma/client'
 
 type Props = {
   id: number
   name: string
   price: number
   imageUrl: string
+  ingredients: Ingredient[]
 }
 
-export const ProductCard = ({ imageUrl, id, name, price }: Props) => {
+export const ProductCard = ({ imageUrl, id, name, price, ingredients }: Props) => {
   return (
     <div>
       <Link href={`/product/${id}`}>
@@ -25,7 +27,7 @@ export const ProductCard = ({ imageUrl, id, name, price }: Props) => {
           className={'text-sm text-gray-400 font-normal'}
           variant={'bodySemiBold'}
         >
-          Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок
+          {ingredients.map(ingredient => ingredient.name).join(', ')}
         </Typography>
         <div className={'flex justify-between items-center mt-4'}>
           <div className={'flex gap-1'}>
