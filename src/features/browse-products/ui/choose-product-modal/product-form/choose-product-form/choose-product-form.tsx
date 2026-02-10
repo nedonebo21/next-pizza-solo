@@ -25,11 +25,9 @@ export const ChooseProductForm = ({
       <ProductImage imageUrl={imageUrl} size={20} hasBorders={false} />
 
       <div className={'w-[490px] bg-[#f7f6f5] p-7'}>
-        <DialogTitle>
-          <Typography className={'mb-1'} variant={'title'} as={'span'} textAlign={'left'}>
-            {name}
-          </Typography>
-        </DialogTitle>
+        <Typography className={'mb-1'} variant={'title'} as={'h4'} textAlign={'left'}>
+          {name}
+        </Typography>
         <Button
           onClick={() => onSubmit()}
           isLoading={isLoading}

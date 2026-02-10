@@ -3,7 +3,7 @@ import { GroupVariants, IngredientItem, ProductImage, Typography } from '@/share
 import { Button } from '@/shared/ui/shadcn/button'
 import { Ingredient, ProductVariant } from '@prisma/client'
 import { PizzaSize, PizzaType, pizzaTypes } from '@/entities/product'
-import { getPizzaDetails, usePizzaOptions } from '../../../model'
+import { getPizzaDetails, usePizzaOptions } from '../../../../model'
 import { DialogTitle } from '@/shared/ui/shadcn/dialog'
 
 type ChoosePizzaFormProps = {
@@ -64,11 +64,9 @@ export const ChoosePizzaForm = ({
       <ProductImage imageUrl={imageUrl} size={size} hasBorders={true} />
 
       <div className={'w-[490px] bg-[#f7f6f5] p-7'}>
-        <DialogTitle>
-          <Typography className={'mb-1'} variant={'title'} as={'span'} textAlign={'left'}>
-            {name}
-          </Typography>
-        </DialogTitle>
+        <Typography className={'mb-1'} variant={'title'} as={'h4'} textAlign={'left'}>
+          {name}
+        </Typography>
         <Typography className={'text-gray-400'} variant={'bodySemiBold'} textAlign={'left'}>
           {textDetails}
         </Typography>
