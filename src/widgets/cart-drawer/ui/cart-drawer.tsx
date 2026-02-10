@@ -80,6 +80,7 @@ export const CartDrawer = ({ children }: CartDrawerProps) => {
                         )
                       : ''
                   }
+                  disabled={item.disabled}
                   onQuantityUpdate={type => handleQuantityUpdate(item.id, item.quantity, type)}
                   onItemRemove={() => removeCartItem(item.id)}
                 />

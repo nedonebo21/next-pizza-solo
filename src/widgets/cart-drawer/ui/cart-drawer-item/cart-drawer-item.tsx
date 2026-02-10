@@ -14,7 +14,6 @@ type CartDrawerItemProps = CartItemProps & {
 
 export const CartDrawerItem = ({
   className,
-  id,
   name,
   price,
   quantity,
@@ -22,9 +21,18 @@ export const CartDrawerItem = ({
   imageUrl,
   onQuantityUpdate,
   onItemRemove,
+  disabled,
 }: CartDrawerItemProps) => {
   return (
-    <div className={cn('flex bg-white p-5 gap-6', className)}>
+    <div
+      className={cn(
+        'flex bg-white p-5 gap-6',
+        {
+          'opacity-50 pointer-events-none': disabled,
+        },
+        className
+      )}
+    >
       <CartItemImage src={imageUrl} />
 
       <div className={'flex-1'}>
