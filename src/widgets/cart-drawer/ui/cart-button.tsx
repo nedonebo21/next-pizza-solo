@@ -21,6 +21,7 @@ export const CartButton = ({ className }: CartButtonProps) => {
     <CartDrawer>
       <Button
         isLoading={loading}
+        disabled={loading}
         className={cn('group relative flex items-center', { 'w-[105px]': loading }, className)}
       >
         <Typography variant={'bodyBold'}>{totalAmount} ₽</Typography>
