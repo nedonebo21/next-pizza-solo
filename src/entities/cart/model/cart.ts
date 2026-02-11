@@ -23,7 +23,11 @@ export const useCartStore = create<CartState>((set, get) => ({
   },
   updateItemQuantity: async (id: number, quantity: number) => {
     try {
-      set({ loading: true, error: false })
+      set(state => ({
+        loading: true,
+        error: false,
+        items: state.items.map(item => (item.id === id ? { ...item, disabled: true } : item)),
+      }))
       const data = await Api.cart.updateItemQuantity(id, quantity)
       set(getCartDetails(data))
     } catch (error) {
