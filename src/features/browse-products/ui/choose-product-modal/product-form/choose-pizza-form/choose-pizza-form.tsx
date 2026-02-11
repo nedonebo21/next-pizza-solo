@@ -4,7 +4,6 @@ import { Button } from '@/shared/ui/shadcn/button'
 import { Ingredient, ProductVariant } from '@prisma/client'
 import { PizzaSize, PizzaType, pizzaTypes } from '@/entities/product'
 import { getPizzaDetails, usePizzaOptions } from '../../../../model'
-import { DialogTitle } from '@/shared/ui/shadcn/dialog'
 
 type ChoosePizzaFormProps = {
   className?: string
