@@ -8,43 +8,29 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/shared/ui/shadcn/sheet'
-import { ReactNode, useEffect } from 'react'
-import { Typography } from '@/shared/ui'
+  Typography,
+  Button,
+} from '@/shared/ui'
+import { ReactNode } from 'react'
 import Link from 'next/link'
-import { Button } from '@/shared/ui/shadcn/button'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { CartDrawerItem } from './cart-drawer-item'
-import { getCartItemDetails, useCartStore } from '@/entities/cart'
+import { CartDrawerItem } from '@/shared/ui'
+import { getCartItemDetails, useCart } from '@/entities/cart'
 import { PizzaSize, PizzaType } from '@/entities/product'
-import { useShallow } from 'zustand/shallow'
 import Image from 'next/image'
 import { cn } from '@/shared/lib/utils'
+import { ApiRoutes } from '@/shared/services'
 
 type CartDrawerProps = {
   children: ReactNode
 }
 
 export const CartDrawer = ({ children }: CartDrawerProps) => {
-  const [totalAmount, items, fetchCartItems, updateQuantity, removeCartItem, loading] =
-    useCartStore(
-      useShallow(state => [
-        state.totalAmount,
-        state.items,
-        state.fetchCartItems,
-        state.updateItemQuantity,
-        state.removeCartItem,
-        state.loading,
-      ])
-    )
-
-  useEffect(() => {
-    fetchCartItems()
-  }, [])
+  const { totalAmount, updateItemQuantity, items, removeCartItem, loading } = useCart()
 
   const handleQuantityUpdate = (id: number, quantity: number, type: 'plus' | 'minus') => {
     const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1
-    updateQuantity(id, newQuantity)
+    updateItemQuantity(id, newQuantity)
   }
 
   const itemsCount = items.length
@@ -95,35 +81,25 @@ export const CartDrawer = ({ children }: CartDrawerProps) => {
           {totalAmount > 0 && (
             <>
               <div className={'-mx-6 mt-5 overflow-auto scrollbar flex-1 gap-2'}>
-                {items.map(item => {
-                  const isPizza = item.pizzaSize && item.pizzaType
-
-                  return (
-                    <div className={'mb-2'} key={item.id}>
-                      <CartDrawerItem
-                        id={item.id}
-                        imageUrl={item.imageUrl}
-                        name={item.name}
-                        price={item.price}
-                        quantity={item.quantity}
-                        details={
-                          isPizza
-                            ? getCartItemDetails(
-                                item.pizzaType as PizzaType,
-                                item.pizzaSize as PizzaSize,
-                                item.ingredients
-                              )
-                            : ''
-                        }
-                        disabled={item.disabled}
-                        onQuantityUpdate={type =>
-                          handleQuantityUpdate(item.id, item.quantity, type)
-                        }
-                        onItemRemove={() => removeCartItem(item.id)}
-                      />
-                    </div>
-                  )
-                })}
+                {items.map(item => (
+                  <div className={'mb-2'} key={item.id}>
+                    <CartDrawerItem
+                      id={item.id}
+                      imageUrl={item.imageUrl}
+                      name={item.name}
+                      price={item.price}
+                      quantity={item.quantity}
+                      details={getCartItemDetails(
+                        item.ingredients,
+                        item.pizzaType as PizzaType,
+                        item.pizzaSize as PizzaSize
+                      )}
+                      disabled={item.disabled}
+                      onQuantityUpdate={type => handleQuantityUpdate(item.id, item.quantity, type)}
+                      onItemRemove={() => removeCartItem(item.id)}
+                    />
+                  </div>
+                ))}
               </div>
 
               <SheetFooter className={'-mx-6 bg-white p-8'}>
@@ -140,7 +116,7 @@ export const CartDrawer = ({ children }: CartDrawerProps) => {
                     <span className={'font-bold text-lg'}>{totalAmount} ₽</span>
                   </div>
 
-                  <Link href={'/cart'}>
+                  <Link href={ApiRoutes.CHECKOUT}>
                     <Button
                       className={'w-full h-12 text-base'}
                       type={'submit'}
