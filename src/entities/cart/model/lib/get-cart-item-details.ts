@@ -2,9 +2,9 @@ import { mapPizzaType, PizzaSize, PizzaType } from '@/entities/product'
 import { CartStateItem } from '@/entities/cart/model/types'
 
 export const getCartItemDetails = (
-  pizzaType: PizzaType,
-  pizzaSize: PizzaSize,
-  ingredients: CartStateItem['ingredients']
+  ingredients: CartStateItem['ingredients'],
+  pizzaType?: PizzaType,
+  pizzaSize?: PizzaSize
 ): string => {
   const details = []
 

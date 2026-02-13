@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { Ingredient } from '@prisma/client'
-import { Api } from '@/shared/services'
+import * as ingredientApi from '@/entities/ingredient'
 
 export const useIngredients = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -12,7 +12,7 @@ export const useIngredients = () => {
     async function fetchIngredients() {
       try {
         setIsLoading(true)
-        const ingredientsRes = await Api.ingredients.getAll()
+        const ingredientsRes = await ingredientApi.getAll()
         setIngredients(ingredientsRes)
       } catch (e) {
         console.error(e)

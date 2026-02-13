@@ -1,4 +1,4 @@
-import { mapPizzaSize, mapPizzaType } from '@/entities/product/model/consts'
+import { mapPizzaSize, mapPizzaType } from './consts'
 
 export const pizzaSizes = Object.entries(mapPizzaSize).map(([value, name]) => ({
   name,

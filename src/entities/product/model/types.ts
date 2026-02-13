@@ -1,5 +1,5 @@
 import { Ingredient, Product, ProductVariant } from '@prisma/client'
-import { mapPizzaSize, mapPizzaType } from '@/entities/product/model/consts'
+import { mapPizzaSize, mapPizzaType } from './consts'
 
 export type ProductWithRelations = Product & {
   variants: ProductVariant[]

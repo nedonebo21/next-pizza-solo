@@ -1,12 +1,4 @@
-export type CartItemProps = {
-  id: number
-  imageUrl: string
-  name: string
-  price: number
-  quantity: number
-  details: string
-  disabled?: boolean
-}
+import { Cart, CartItem, Ingredient, Product, ProductVariant } from '@prisma/client'
 
 export type CartStateItem = {
   id: number
@@ -29,4 +21,20 @@ export type CartState = {
   updateItemQuantity: (id: number, quantity: number) => Promise<void>
   addCartItem: (values: any) => Promise<void>
   removeCartItem: (id: number) => Promise<void>
+}
+
+export type CartItemDTO = CartItem & {
+  productVariant: ProductVariant & {
+    product: Product
+  }
+  ingredients: Ingredient[]
+}
+
+export type CartDTO = Cart & {
+  items: CartItemDTO[]
+}
+
+export type CreateCartItemValues = {
+  productVariantId: number
+  ingredients?: number[]
 }
