@@ -1,6 +1,6 @@
 'use client'
 
-import { Dialog, DialogContent } from '@/shared/ui/shadcn/dialog'
+import { Dialog, DialogContent } from '@/shared/ui'
 import { useRouter } from 'next/navigation'
 import { cn } from '@/shared/lib/utils'
 import { ProductWithRelations } from '@/entities/product'

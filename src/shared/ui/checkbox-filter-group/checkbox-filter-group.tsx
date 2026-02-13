@@ -2,9 +2,7 @@
 
 import { ChangeEvent, useState } from 'react'
 import type { FilterCheckboxProps } from '@/shared/ui/filter-checkbox'
-import { FilterCheckbox } from '@/shared/ui/filter-checkbox'
-import { Input } from '@/shared/ui/shadcn/input'
-import { Skeleton } from '@/shared/ui/shadcn/skeleton'
+import { Input, Skeleton, FilterCheckbox } from '@/shared/ui'
 import { cn } from '@/shared/lib/utils'
 
 type Item = FilterCheckboxProps

@@ -1,5 +1,5 @@
 import { Minus, Plus } from 'lucide-react'
-import { Button } from '@/shared/ui/shadcn/button'
+import { Button } from '@/shared/ui'
 import { cn } from '@/shared/lib/utils'
 
 export type CountIconButtonProps = {

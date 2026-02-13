@@ -1,6 +1,6 @@
 import { cn } from '@/shared/lib/utils'
-import { CountIconButton, CountIconButtonProps } from '@/shared/ui/count-icon-button'
-import { Typography } from '@/shared/ui'
+import { CountIconButtonProps } from '@/shared/ui/count-icon-button'
+import { Typography, CountIconButton } from '@/shared/ui'
 
 type CountButtonProps = {
   value?: number

@@ -2,9 +2,9 @@
 
 import { ComponentProps } from 'react'
 import { cn } from '@/shared/lib/utils'
-import { Button } from '@/shared/ui/shadcn/button'
-import { useCategoryStore } from '@/features/filter-category'
+import { Button } from '@/shared/ui'
 import { Category } from '@prisma/client'
+import { useCategoryStore } from '@/entities/category'
 
 type CategoryFilterProps = {
   categories: Category[]

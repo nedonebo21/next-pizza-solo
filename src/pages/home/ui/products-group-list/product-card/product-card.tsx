@@ -1,7 +1,6 @@
 import Link from 'next/link'
-import { Typography } from '@/shared/ui'
 import { Plus } from 'lucide-react'
-import { Button } from '@/shared/ui/shadcn/button'
+import { Button, Typography } from '@/shared/ui'
 import { Ingredient } from '@prisma/client'
 
 type Props = {

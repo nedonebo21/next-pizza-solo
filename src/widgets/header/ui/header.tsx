@@ -3,19 +3,21 @@ import Image from 'next/image'
 
 import Logo from '@/shared/assets/images/logo.png'
 import { cn } from '@/shared/lib/utils'
-import { Button } from '@/shared/ui/shadcn/button'
 
 import type { ComponentProps } from 'react'
-import { Typography, Container } from '@/shared/ui'
+import { Typography, Container, Button } from '@/shared/ui'
 import Link from 'next/link'
 import { SearchProducts } from '@/features/browse-products'
 import { CartButton } from '@/widgets/cart-drawer'
 
-type HeaderProps = Omit<ComponentProps<'header'>, 'children'>
+type HeaderProps = {
+  hasSearch?: boolean
+  hasCart?: boolean
+} & Omit<ComponentProps<'header'>, 'children'>
 
-export const Header = ({ className, ...rest }: HeaderProps) => {
+export const Header = ({ className, hasSearch = true, hasCart = true, ...rest }: HeaderProps) => {
   return (
-    <header className={cn('border border-b', className)} {...rest}>
+    <header className={cn('border-b', className)} {...rest}>
       <Container className={'flex items-center justify-between py-10'}>
         <Link href={'/'} className={'flex items-center gap-4'}>
           <Image src={Logo} alt={'logo'} />
@@ -39,17 +41,21 @@ export const Header = ({ className, ...rest }: HeaderProps) => {
           </div>
         </Link>
 
-        <div className={'mx-10 flex-1'}>
-          <SearchProducts />
-        </div>
+        {hasSearch && (
+          <div className={'mx-10 flex-1'}>
+            <SearchProducts />
+          </div>
+        )}
 
         <div className={'flex items-center gap-4'}>
           <Button className={'flex items-start gap-2'} variant={'outline'}>
             <User /> Войти
           </Button>
-          <div>
-            <CartButton />
-          </div>
+          {hasCart && (
+            <div>
+              <CartButton />
+            </div>
+          )}
         </div>
       </Container>
     </header>

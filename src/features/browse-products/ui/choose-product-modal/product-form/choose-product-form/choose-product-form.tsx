@@ -1,6 +1,5 @@
 import { cn } from '@/shared/lib/utils'
-import { ProductImage, Typography } from '@/shared/ui'
-import { Button } from '@/shared/ui/shadcn/button'
+import { ProductImage, Typography, Button } from '@/shared/ui'
 
 type ChoosePizzaFormProps = {
   className?: string

@@ -1,7 +1,7 @@
 import { ComponentProps } from 'react'
 import { cn } from '@/shared/lib/utils'
 import { ArrowUpDown } from 'lucide-react'
-import { Typography } from '@/shared/ui/typography'
+import { Typography } from '@/shared/ui'
 
 type SortPopupProps = Omit<ComponentProps<'div'>, 'children'>
 

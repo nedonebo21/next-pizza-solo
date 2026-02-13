@@ -1,6 +1,5 @@
-import { Checkbox } from '@/shared/ui/shadcn/checkbox'
 import { ComponentProps, useId } from 'react'
-import { Typography } from '@/shared/ui/typography'
+import { Typography, Checkbox } from '@/shared/ui'
 
 export type FilterCheckboxProps = {
   value: string

@@ -1,22 +1,18 @@
 'use client'
 
-import { Typography } from '@/shared/ui'
+import { Typography, Button } from '@/shared/ui'
 import { Separator } from '@radix-ui/react-select'
 import { ArrowRight, ShoppingCart } from 'lucide-react'
-import { Button } from '@/shared/ui/shadcn/button'
 import { cn } from '@/shared/lib/utils'
 import { CartDrawer } from './cart-drawer'
-import { useCartStore } from '@/entities/cart'
-import { useShallow } from 'zustand/shallow'
+import { useCart } from '@/entities/cart'
 
 type CartButtonProps = {
   className?: string
 }
 
 export const CartButton = ({ className }: CartButtonProps) => {
-  const [items, totalAmount, loading] = useCartStore(
-    useShallow(state => [state.items, state.totalAmount, state.loading])
-  )
+  const { items, totalAmount, loading } = useCart()
   return (
     <CartDrawer>
       <Button

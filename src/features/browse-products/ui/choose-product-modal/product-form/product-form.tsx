@@ -1,7 +1,6 @@
 'use client'
 
-import { useCartStore } from '@/entities/cart'
-import { useShallow } from 'zustand/shallow'
+import { useCart } from '@/entities/cart'
 import toast from 'react-hot-toast'
 import { ProductWithRelations } from '@/entities/product'
 import { ChoosePizzaForm } from './choose-pizza-form'
@@ -13,9 +12,7 @@ type ProductFormProps = {
 }
 
 export const ProductForm = ({ product, onSubmit: _onSubmit }: ProductFormProps) => {
-  const [addCartItem, loading] = useCartStore(
-    useShallow(state => [state.addCartItem, state.loading])
-  )
+  const { addCartItem, loading } = useCart()
 
   const onSubmit = async (productVariantId?: number, ingredients?: number[]) => {
     try {

@@ -1,6 +1,5 @@
 import { cn } from '@/shared/lib/utils'
-import { GroupVariants, IngredientItem, ProductImage, Typography } from '@/shared/ui'
-import { Button } from '@/shared/ui/shadcn/button'
+import { GroupVariants, IngredientItem, ProductImage, Typography, Button } from '@/shared/ui'
 import { Ingredient, ProductVariant } from '@prisma/client'
 import { PizzaSize, PizzaType, pizzaTypes } from '@/entities/product'
 import { getPizzaDetails, usePizzaOptions } from '../../../../model'

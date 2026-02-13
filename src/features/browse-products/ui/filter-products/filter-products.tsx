@@ -1,12 +1,9 @@
 'use client'
 
 import { ComponentProps } from 'react'
-import { Typography, RangeSlider, CheckboxFilterGroup } from '@/shared/ui'
-import { Input } from '@/shared/ui/shadcn/input'
+import { Input, Typography, RangeSlider, CheckboxFilterGroup } from '@/shared/ui'
 import { PRICE_MAX, PRICE_MIN, PRICE_STEP } from '@/features/browse-products/model/constants'
-import { useIngredients } from '@/features/browse-products/model/hooks/use-ingredients'
-import { useFilters } from '@/features/browse-products/model/hooks/use-filters'
-import { useQueryFilters } from '@/features/browse-products/model/hooks/use-query-filters'
+import { useIngredients, useFilters, useQueryFilters } from '@/features/browse-products/model/hooks'
 import { pizzaSizesItems, pizzaTypesItems } from '@/entities/product'
 
 type ProductFiltersProps = Omit<ComponentProps<'div'>, 'children'>

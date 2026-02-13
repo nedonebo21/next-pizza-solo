@@ -7,8 +7,8 @@ import { cn } from '@/shared/lib/utils'
 import { useClickAway, useDebounce } from 'react-use'
 import Link from 'next/link'
 import { Typography } from '@/shared/ui'
-import { Api } from '@/shared/services'
 import { Product } from '@prisma/client'
+import * as productApi from '@/entities/product'
 
 type SearchInputProps = Omit<ComponentProps<'input'>, 'children'>
 
@@ -34,7 +34,7 @@ export const SearchProducts = ({ className, ...rest }: SearchInputProps) => {
   useDebounce(
     async () => {
       try {
-        const res = await Api.products.search(searchQuery)
+        const res = await productApi.search(searchQuery)
         setProducts(res)
       } catch (e) {
         console.error(e)
