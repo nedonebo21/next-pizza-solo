@@ -1,4 +1,4 @@
-import { calcTotalPizzaPrice } from './calc-total-pizza-price'
+import { calcTotalPizzaPrice } from '@/widgets/choose-product/model/calc-total-pizza-price'
 import { mapPizzaType, PizzaSize, PizzaType } from '@/entities/product'
 import { Ingredient, ProductVariant } from '@prisma/client'
 

@@ -4,7 +4,7 @@ import { Dialog, DialogContent } from '@/shared/ui'
 import { useRouter } from 'next/navigation'
 import { cn } from '@/shared/lib/utils'
 import { ProductWithRelations } from '@/entities/product'
-import { ProductForm } from '@/features/browse-products'
+import { ProductForm } from '@/widgets/choose-product'
 
 type ChooseProductProps = {
   product: ProductWithRelations

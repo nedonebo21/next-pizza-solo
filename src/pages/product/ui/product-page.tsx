@@ -1,7 +1,7 @@
 import { prisma } from '../../../../prisma/prisma-client'
 import { notFound } from 'next/navigation'
 import { Container } from '@/shared/ui'
-import { ProductForm } from '@/features/browse-products'
+import { ProductForm } from '@/widgets/choose-product'
 
 export const ProductPage = async ({ params: { id } }: { params: { id: string } }) => {
   const product = await prisma.product.findFirst({

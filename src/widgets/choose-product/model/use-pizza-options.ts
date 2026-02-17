@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { PizzaSize, PizzaType } from '@/entities/product'
 import { Variant } from '@/shared/ui'
 import { useSet } from 'react-use'
-import { getAvailablePizzaSizes } from '../lib'
+import { getAvailablePizzaSizes } from '@/widgets/choose-product/model'
 import { ProductVariant } from '@prisma/client'
 
 type ReturnProps = {
