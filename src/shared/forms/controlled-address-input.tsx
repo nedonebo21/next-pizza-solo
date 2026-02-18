@@ -60,7 +60,7 @@ export const ControlledAddressInput = <T extends FieldValues>({
         </Typography>
       )}
       <AddressSuggestions
-        token={'baf3d6809d2806f7555efe625fb8ad998ac36b39'}
+        token={process.env.NEXT_PUBLIC_DADATA_TOKEN!}
         value={suggestionValue}
         onChange={handleAddressChange}
         containerClassName="w-full"
