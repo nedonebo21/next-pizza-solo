@@ -3,14 +3,18 @@ import { ControlledTextarea, ControlledAddressInput } from '@/shared/forms'
 import { useFormContext } from 'react-hook-form'
 import { CheckoutFormValues } from '@/features/checkout/model'
 
-export const CheckoutAddressForm = () => {
+type CheckoutAddressFormProps = {
+  className?: string
+}
+
+export const CheckoutAddressForm = ({ className }: CheckoutAddressFormProps) => {
   const {
     formState: { errors },
     control,
   } = useFormContext<CheckoutFormValues>()
 
   return (
-    <Card title={'3. Адрес доставки'}>
+    <Card title={'3. Адрес доставки'} className={className}>
       <div className={'flex flex-col gap-5'}>
         <ControlledAddressInput
           control={control}

@@ -3,14 +3,18 @@ import { Card } from '@/shared/ui'
 import { ControlledInput } from '@/shared/forms'
 import { CheckoutFormValues } from '@/features/checkout/model'
 
-export const CheckoutPersonalForm = () => {
+type CheckoutPersonalFormProps = {
+  className?: string
+}
+
+export const CheckoutPersonalForm = ({ className }: CheckoutPersonalFormProps) => {
   const {
     formState: { errors },
     control,
   } = useFormContext<CheckoutFormValues>()
 
   return (
-    <Card title={'2. Персональные данные'}>
+    <Card title={'2. Персональные данные'} className={className}>
       <div className={'grid grid-cols-2 gap-5'}>
         <ControlledInput
           control={control}

@@ -7,6 +7,7 @@ import { CheckoutItems } from './checkout-items'
 import { CheckoutAddressForm, CheckoutForm, CheckoutPersonalForm } from '@/features/checkout'
 import { CheckoutFormValues } from '@/features/checkout'
 import { SubmitHandler } from 'react-hook-form'
+import { cn } from '@/shared/lib/utils'
 
 export const CheckoutPage = () => {
   const { totalAmount, updateItemQuantity, removeCartItem, items, loading } = useCart()
@@ -33,11 +34,12 @@ export const CheckoutPage = () => {
               items={items}
               onItemRemove={removeCartItem}
               onQuantityUpdate={handleQuantityUpdate}
+              isLoading={loading}
             />
-            <CheckoutPersonalForm />
-            <CheckoutAddressForm />
+            <CheckoutPersonalForm className={cn({ 'opacity-40 pointer-events-none': loading })} />
+            <CheckoutAddressForm className={cn({ 'opacity-40 pointer-events-none': loading })} />
           </div>
-          <CheckoutSidebar totalAmount={totalAmount} loading={loading} />
+          <CheckoutSidebar totalAmount={totalAmount} isLoading={loading} />
         </div>
       </CheckoutForm>
     </Container>

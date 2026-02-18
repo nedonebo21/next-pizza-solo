@@ -1,12 +1,12 @@
-import { Button, Card, Typography } from '@/shared/ui'
+import { Button, Card, Skeleton, Typography } from '@/shared/ui'
 import { DeliveryDetails } from './delivery-details'
 import { ArrowRight, Package, Percent, Truck } from 'lucide-react'
 
 type CheckoutSidebarProps = {
   totalAmount: number
-  loading: boolean
+  isLoading: boolean
 }
-export const CheckoutSidebar = ({ totalAmount, loading }: CheckoutSidebarProps) => {
+export const CheckoutSidebar = ({ totalAmount, isLoading }: CheckoutSidebarProps) => {
   const taxPrice = totalAmount / 10
   const deliveryPrice = 120
   const totalPrice = taxPrice + totalAmount + deliveryPrice
@@ -17,9 +17,18 @@ export const CheckoutSidebar = ({ totalAmount, loading }: CheckoutSidebarProps) 
           <Typography textAlign={'left'} variant={'price'} as={'span'}>
             Итого:
           </Typography>
-          <Typography className={'text-[34px]'} textAlign={'left'} variant={'title'} as={'span'}>
-            {totalPrice} ₽
-          </Typography>
+          {isLoading ? (
+            <Skeleton className={'w-48 h-11 rounded-[6px]'} />
+          ) : (
+            <Typography
+              className={'text-[34px] h-11'}
+              textAlign={'left'}
+              variant={'title'}
+              as={'span'}
+            >
+              {totalPrice} ₽
+            </Typography>
+          )}
         </div>
 
         <DeliveryDetails
@@ -39,8 +48,8 @@ export const CheckoutSidebar = ({ totalAmount, loading }: CheckoutSidebarProps) 
         />
 
         <Button
-          isLoading={loading}
-          disabled={loading}
+          isLoading={isLoading}
+          disabled={isLoading}
           type={'submit'}
           className={'w-full h-14 rounded-2xl mt-6 text-base font-bold'}
         >

@@ -34,6 +34,7 @@ export const ControlledInput = <T extends FieldValues>({
   }
 
   const isError = !!errorMessage
+  const isClearable = !!value
   return (
     <label className={className}>
       {label && (
@@ -49,7 +50,7 @@ export const ControlledInput = <T extends FieldValues>({
       )}
       <div className={'relative'}>
         <Input className={'h-12 text-md'} {...{ ...rest, value, onChange, onBlur, id: name }} />
-        <ClearButton onClick={handleClear} />
+        {isClearable && <ClearButton onClick={handleClear} />}
       </div>
       {isError && (
         <Typography variant={'error'} as={'p'} textAlign={'left'} className={'text-sm mt-2'}>

@@ -1,4 +1,4 @@
-import { Typography } from '@/shared/ui'
+import { Skeleton, Typography } from '@/shared/ui'
 import { cn } from '@/shared/lib/utils'
 import { ReactNode } from 'react'
 
@@ -7,8 +7,15 @@ type CheckoutItemDetailsProps = {
   price: number
   title: string
   icon?: ReactNode
+  isLoading?: boolean
 }
-export const DeliveryDetails = ({ className, price, title, icon }: CheckoutItemDetailsProps) => {
+export const DeliveryDetails = ({
+  className,
+  price,
+  title,
+  icon,
+  isLoading,
+}: CheckoutItemDetailsProps) => {
   return (
     <div className={cn('flex my-4', className)}>
       <Typography
@@ -25,9 +32,13 @@ export const DeliveryDetails = ({ className, price, title, icon }: CheckoutItemD
           className={'flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2'}
         />
       </Typography>
-      <Typography className={'text-lg'} variant={'price'}>
-        {price} ₽
-      </Typography>
+      {isLoading ? (
+        <Skeleton className={'w-16 h-6 rounded-[6px]'} />
+      ) : (
+        <Typography className={'text-lg'} variant={'price'}>
+          {price} ₽
+        </Typography>
+      )}
     </div>
   )
 }
