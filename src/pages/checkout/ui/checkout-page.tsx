@@ -8,8 +8,12 @@ import { CheckoutAddressForm, CheckoutForm, CheckoutPersonalForm } from '@/featu
 import { CheckoutFormValues } from '@/features/checkout'
 import { SubmitHandler } from 'react-hook-form'
 import { cn } from '@/shared/lib/utils'
+import { createOrder } from '../../../../app/actions'
+import toast from 'react-hot-toast'
+import { useState } from 'react'
 
 export const CheckoutPage = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const { totalAmount, updateItemQuantity, removeCartItem, items, loading } = useCart()
 
   const handleQuantityUpdate = (id: number, quantity: number, type: 'plus' | 'minus') => {
@@ -17,8 +21,19 @@ export const CheckoutPage = () => {
     updateItemQuantity(id, newQuantity)
   }
 
-  const onSubmit: SubmitHandler<CheckoutFormValues> = (data, e) => {
-    console.log({ data, e })
+  const onSubmit: SubmitHandler<CheckoutFormValues> = async (data, e) => {
+    try {
+      setIsSubmitting(true)
+      const url = await createOrder(data)
+      toast.success('Заказ успешно создан! Переход на страницу оплаты')
+      if (url) {
+        location.href = url
+      }
+    } catch (err) {
+      console.error(err)
+      setIsSubmitting(false)
+      toast.error('Ошибка при создании заказа')
+    }
   }
 
   return (
@@ -39,7 +54,11 @@ export const CheckoutPage = () => {
             <CheckoutPersonalForm className={cn({ 'opacity-40 pointer-events-none': loading })} />
             <CheckoutAddressForm className={cn({ 'opacity-40 pointer-events-none': loading })} />
           </div>
-          <CheckoutSidebar totalAmount={totalAmount} isLoading={loading} />
+          <CheckoutSidebar
+            totalAmount={totalAmount}
+            isLoading={loading}
+            isSubmitting={isSubmitting}
+          />
         </div>
       </CheckoutForm>
     </Container>

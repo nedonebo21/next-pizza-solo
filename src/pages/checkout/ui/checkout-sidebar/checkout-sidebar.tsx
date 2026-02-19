@@ -4,9 +4,10 @@ import { ArrowRight, Package, Percent, Truck } from 'lucide-react'
 
 type CheckoutSidebarProps = {
   totalAmount: number
-  isLoading: boolean
+  isLoading?: boolean
+  isSubmitting?: boolean
 }
-export const CheckoutSidebar = ({ totalAmount, isLoading }: CheckoutSidebarProps) => {
+export const CheckoutSidebar = ({ totalAmount, isLoading, isSubmitting }: CheckoutSidebarProps) => {
   const taxPrice = totalAmount / 10
   const deliveryPrice = 120
   const totalPrice = taxPrice + totalAmount + deliveryPrice
@@ -48,8 +49,8 @@ export const CheckoutSidebar = ({ totalAmount, isLoading }: CheckoutSidebarProps
         />
 
         <Button
-          isLoading={isLoading}
-          disabled={isLoading}
+          isLoading={isLoading || isSubmitting}
+          disabled={isLoading || isSubmitting}
           type={'submit'}
           className={'w-full h-14 rounded-2xl mt-6 text-base font-bold'}
         >
