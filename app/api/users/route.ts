@@ -1,1 +1,1 @@
-export { POST, GET } from '@/app/api-routes/users/users'
+export { POST, GET } from '@/entities/user'

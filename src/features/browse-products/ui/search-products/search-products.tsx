@@ -8,7 +8,7 @@ import { useClickAway, useDebounce } from 'react-use'
 import Link from 'next/link'
 import { Typography } from '@/shared/ui'
 import { Product } from '@prisma/client'
-import * as productApi from '@/entities/product'
+import * as productApi from '../../api/product-api'
 
 type SearchInputProps = Omit<ComponentProps<'input'>, 'children'>
 

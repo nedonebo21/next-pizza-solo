@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '../../../../prisma/prisma-client'
+import { prisma } from '../../../../../prisma/prisma-client'
 import { updateCartTotalAmount } from '@/entities/cart'
 
 export async function PATCH(req: NextRequest, context: { params: Promise<{ id: string }> }) {

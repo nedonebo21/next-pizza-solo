@@ -1,1 +1,1 @@
-export { GET } from '@/app/api-routes/products/search'
+export { GET } from '@/entities/product'

@@ -19,7 +19,7 @@ import { getCartItemDetails, useCart } from '@/entities/cart'
 import { PizzaSize, PizzaType } from '@/entities/product'
 import Image from 'next/image'
 import { cn } from '@/shared/lib/utils'
-import { ApiRoutes } from '@/shared/services'
+import { ApiRoutes } from '@/shared/api'
 
 type CartDrawerProps = {
   children: ReactNode

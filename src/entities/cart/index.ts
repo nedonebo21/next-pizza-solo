@@ -1,3 +1,6 @@
 export { getCartItemDetails, updateCartTotalAmount, getOrCreateCart } from './model/lib'
 export type { CreateCartItemValues, CartStateItem } from './model/types'
 export { useCart } from './model/hooks/use-cart'
+export { POST, GET } from './api/routes/cart'
+export { DELETE, PATCH } from './api/routes/cart-item'
+export type { CartItemDTO } from './model/types'

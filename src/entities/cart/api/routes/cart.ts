@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '../../../../prisma/prisma-client'
+import { prisma } from '../../../../../prisma/prisma-client'
 import { getOrCreateCart, updateCartTotalAmount } from '@/entities/cart'
 import { CreateCartItemValues } from '@/entities/cart'
 

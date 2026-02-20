@@ -1,1 +1,1 @@
-export { GET, POST } from '@/app/api-routes/cart/cart'
+export { GET, POST } from '@/entities/cart'
