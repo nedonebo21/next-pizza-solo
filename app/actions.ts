@@ -1,11 +1,11 @@
 'use server'
 
-import { CheckoutFormValues } from '@/features/checkout'
+import { CheckoutFormValues, createPayment } from '@/features/checkout'
 import { prisma } from '../prisma/prisma-client'
 import { OrderStatus } from '@prisma/client'
 import { cookies } from 'next/headers'
 import { sendEmail } from '@/shared/lib'
-import { PayOrder } from '@/shared/ui'
+import { PayOrder } from '@/features/checkout'
 
 export async function createOrder(data: CheckoutFormValues) {
   try {
@@ -72,18 +72,36 @@ export async function createOrder(data: CheckoutFormValues) {
       },
     })
 
-    //TODO создание ссылки для оплаты
-    // здесь
+    const paymentData = await createPayment({
+      amount: order.totalAmount,
+      description: `Оплата заказа #${order.id}`,
+      orderId: order.id,
+    })
+
+    if (!paymentData) {
+      throw new Error('Payment data not found')
+    }
+
+    await prisma.order.update({
+      where: {
+        id: order.id,
+      },
+      data: {
+        paymentId: paymentData.id,
+      },
+    })
+
+    const paymentUrl = paymentData.confirmation.confirmation_url
 
     const emailHtml = PayOrder({
       orderId: order.id,
       totalPrice: order.totalAmount,
-      paymentUrl: 'https://google.com',
+      paymentUrl,
     })
 
     await sendEmail(data.email, `NextPizza | Оплата заказа ${order.id}`, emailHtml)
 
-    return 'https://google.com'
+    return paymentUrl
   } catch (error) {
     console.error(error)
   }
