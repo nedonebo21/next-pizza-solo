@@ -4,6 +4,7 @@ import type { ReactNode } from 'react'
 
 import '@/shared/styles/globals.css'
 import { Toaster } from 'react-hot-toast'
+import { Providers } from '@/app/providers/providers'
 
 const nunito = Nunito({
   subsets: ['cyrillic'],
@@ -19,8 +20,7 @@ export default function RootLayout({
   return (
     <html lang={'en'}>
       <body className={nunito.className}>
-        {children}
-        <Toaster />
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
