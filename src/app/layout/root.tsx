@@ -3,7 +3,6 @@ import { Nunito } from 'next/font/google'
 import type { ReactNode } from 'react'
 
 import '@/shared/styles/globals.css'
-import { Toaster } from 'react-hot-toast'
 import { Providers } from '@/app/providers/providers'
 
 const nunito = Nunito({
