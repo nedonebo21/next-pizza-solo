@@ -1,3 +1,5 @@
+'use client'
+
 import { ReactNode } from 'react'
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
 import { CheckoutFormValues, checkoutSchema } from '@/features/checkout/model'

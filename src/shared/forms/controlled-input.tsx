@@ -1,3 +1,5 @@
+'use client'
+
 import { ClearButton, Input, RequiredSymbol, Typography } from '@/shared/ui'
 import { Control, FieldValues, useController, UseControllerProps } from 'react-hook-form'
 

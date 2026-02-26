@@ -1,3 +1,5 @@
+'use client'
+
 import { Card } from '@/shared/ui'
 import { ControlledTextarea, ControlledAddressInput } from '@/shared/forms'
 import { useFormContext } from 'react-hook-form'
