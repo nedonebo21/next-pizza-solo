@@ -1,18 +1,16 @@
 'use client'
 
-import { User } from 'lucide-react'
-import Image from 'next/image'
-
-import Logo from '@/shared/assets/images/logo.png'
 import { cn } from '@/shared/lib/utils'
 
-import { ComponentProps, useEffect } from 'react'
-import { Button, Container, Typography } from '@/shared/ui'
-import Link from 'next/link'
+import { ComponentProps, useEffect, useState } from 'react'
+import { Container } from '@/shared/ui'
 import { SearchProducts } from '@/features/browse-products'
 import { CartButton } from '@/widgets/cart-drawer'
 import { useSearchParams } from 'next/navigation'
 import toast from 'react-hot-toast'
+import { ProfileButton } from '@/widgets/profile-button/ui/profile-button'
+import { HeaderLogo } from './header-logo'
+import { AuthModal } from '@/widgets/auth-modal/ui/auth-modal'
 
 type HeaderProps = {
   hasSearch?: boolean
@@ -21,6 +19,11 @@ type HeaderProps = {
 
 export const Header = ({ className, hasSearch = true, hasCart = true, ...rest }: HeaderProps) => {
   const searchParams = useSearchParams()
+  const [isOpen, setIsOpen] = useState(false)
+
+  const handleOpenChange = () => {
+    setIsOpen(!open)
+  }
 
   useEffect(() => {
     if (searchParams?.has('paid')) {
@@ -33,27 +36,7 @@ export const Header = ({ className, hasSearch = true, hasCart = true, ...rest }:
   return (
     <header className={cn('border-b', className)} {...rest}>
       <Container className={'flex items-center justify-between py-10'}>
-        <Link href={'/'} className={'flex items-center gap-4'}>
-          <Image src={Logo} alt={'logo'} />
-          <div className={'flex flex-col gap-1'}>
-            <Typography
-              variant={'title'}
-              as={'h1'}
-              textAlign={'left'}
-              className={'font-black uppercase'}
-            >
-              Next Pizza
-            </Typography>
-            <Typography
-              variant={'bodyNormal'}
-              as={'p'}
-              textAlign={'left'}
-              className={'text-gray-400 leading-3'}
-            >
-              by nedonebo21
-            </Typography>
-          </div>
-        </Link>
+        <HeaderLogo />
 
         {hasSearch && (
           <div className={'mx-10 flex-1'}>
@@ -62,9 +45,8 @@ export const Header = ({ className, hasSearch = true, hasCart = true, ...rest }:
         )}
 
         <div className={'flex items-center gap-4'}>
-          <Button className={'flex items-start gap-2'} variant={'outline'}>
-            <User /> Войти
-          </Button>
+          <AuthModal open={isOpen} onClose={handleOpenChange} />
+          <ProfileButton onClick={() => setIsOpen(true)} />
           {hasCart && (
             <div>
               <CartButton />
