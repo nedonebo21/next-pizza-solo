@@ -1,14 +1,18 @@
+'use client'
+
 import { User } from 'lucide-react'
 import Image from 'next/image'
 
 import Logo from '@/shared/assets/images/logo.png'
 import { cn } from '@/shared/lib/utils'
 
-import type { ComponentProps } from 'react'
-import { Typography, Container, Button } from '@/shared/ui'
+import { ComponentProps, useEffect } from 'react'
+import { Button, Container, Typography } from '@/shared/ui'
 import Link from 'next/link'
 import { SearchProducts } from '@/features/browse-products'
 import { CartButton } from '@/widgets/cart-drawer'
+import { useSearchParams } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 type HeaderProps = {
   hasSearch?: boolean
@@ -16,6 +20,16 @@ type HeaderProps = {
 } & Omit<ComponentProps<'header'>, 'children'>
 
 export const Header = ({ className, hasSearch = true, hasCart = true, ...rest }: HeaderProps) => {
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    if (searchParams?.has('paid')) {
+      setTimeout(() => {
+        toast.success('Заказ успешно оплачен!')
+      }, 500)
+    }
+  }, [])
+
   return (
     <header className={cn('border-b', className)} {...rest}>
       <Container className={'flex items-center justify-between py-10'}>
