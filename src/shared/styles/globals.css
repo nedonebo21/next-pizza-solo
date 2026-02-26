@@ -20,6 +20,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -91,6 +92,7 @@ body {
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.75 0.183 55.934);
 }
+
 .dark {
   --background: oklch(0.141 0.005 285.823);
   --foreground: oklch(0.985 0 0);
@@ -124,11 +126,13 @@ body {
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.408 0.123 38.172);
 }
+
 /*---break---*/
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -137,4 +141,16 @@ body {
   [role='button'] {
     cursor: pointer;
   }
+}
+
+#nprogress .bar {
+  @apply !bg-primary;
+}
+
+#nprogress .peg {
+  @apply !shadow-md !shadow-primary;
+}
+
+#nprogress .spinner-icon {
+  @apply !border-t-primary !border-l-primary;
 }
