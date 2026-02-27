@@ -24,7 +24,7 @@
       "@/widgets/*": ["./src/widgets/*"],
       "@/features/*": ["./src/features/*"],
       "@/entities/*": ["./src/entities/*"],
-      "@/shared/*": ["./src/shared/*"],
+      "@/shared/*": ["./src/shared/*"]
     }
   },
   "include": [
@@ -33,7 +33,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
+    "src/app/api/types/**.d.ts"
   ],
   "exclude": ["node_modules"]
 }
