@@ -1,7 +1,8 @@
 import Image from 'next/image'
+import Link from 'next/link'
+
 import Logo from '@/shared/assets/images/logo.png'
 import { Typography } from '@/shared/ui'
-import Link from 'next/link'
 
 export const HeaderLogo = () => {
   return (

@@ -1,6 +1,13 @@
 'use client'
 
-import {
+import { ArrowLeft, ArrowRight } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+
+import { getCartItemDetails, useCart } from '@/entities/cart'
+import { ApiRoutes } from '@/shared/api'
+import { cn } from '@/shared/lib/utils'
+import { CartDrawerItem ,
   Sheet,
   SheetClose,
   SheetContent,
@@ -11,15 +18,9 @@ import {
   Typography,
   Button,
 } from '@/shared/ui'
-import { ReactNode } from 'react'
-import Link from 'next/link'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { CartDrawerItem } from '@/shared/ui'
-import { getCartItemDetails, useCart } from '@/entities/cart'
-import { PizzaSize, PizzaType } from '@/entities/product'
-import Image from 'next/image'
-import { cn } from '@/shared/lib/utils'
-import { ApiRoutes } from '@/shared/api'
+
+import type { PizzaSize, PizzaType } from '@/entities/product'
+import type { ReactNode } from 'react'
 
 type CartDrawerProps = {
   children: ReactNode
@@ -30,10 +31,12 @@ export const CartDrawer = ({ children }: CartDrawerProps) => {
 
   const handleQuantityUpdate = (id: number, quantity: number, type: 'plus' | 'minus') => {
     const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1
+
     updateItemQuantity(id, newQuantity)
   }
 
   const itemsCount = items.length
+
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
@@ -54,7 +57,7 @@ export const CartDrawer = ({ children }: CartDrawerProps) => {
             <div className={'flex flex-col items-center justify-center w-72 mx-auto'}>
               <Image
                 src={'https://cdn.dodostatic.net/pizza-site/dist/assets/5aa5dac99a832c62f3ef..svg'}
-                alt="Empty Cart"
+                alt='Empty Cart'
                 width={120}
                 height={120}
               />

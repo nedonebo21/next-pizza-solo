@@ -1,10 +1,12 @@
 'use client'
 
-import { ComponentProps } from 'react'
+
+import { useCategoryStore } from '@/entities/category'
 import { cn } from '@/shared/lib/utils'
 import { Button } from '@/shared/ui'
-import { Category } from '@prisma/client'
-import { useCategoryStore } from '@/entities/category'
+
+import type { Category } from '@prisma/client'
+import type { ComponentProps } from 'react'
 
 type CategoryFilterProps = {
   categories: Category[]
@@ -12,6 +14,7 @@ type CategoryFilterProps = {
 
 export const FilterCategory = ({ className, categories, ...rest }: CategoryFilterProps) => {
   const activeCategoryId = useCategoryStore(state => state.activeId)
+
   return (
     <div className={cn('inline-flex gap-1 bg-gray-50 rounded-2xl', className)} {...rest}>
       {categories.map(({ name, id }, index) => {

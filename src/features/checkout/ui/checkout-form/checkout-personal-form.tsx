@@ -1,9 +1,12 @@
 'use client'
 
-import { Card } from '@/shared/ui'
-import { ControlledInput } from '@/shared/forms'
-import { CheckoutFormValues } from '@/features/checkout/model'
 import { useFormContext } from 'react-hook-form'
+
+import { ControlledInput } from '@/shared/forms'
+import { Card } from '@/shared/ui'
+
+import type { CheckoutFormValues } from '@/features/checkout/model'
+
 
 type CheckoutPersonalFormProps = {
   className?: string

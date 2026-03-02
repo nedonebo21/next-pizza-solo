@@ -1,5 +1,8 @@
-import { ComponentProps, useId } from 'react'
+import { useId } from 'react'
+
 import { Typography, Checkbox } from '@/shared/ui'
+
+import type { ComponentProps } from 'react'
 
 export type FilterCheckboxProps = {
   value: string
@@ -8,7 +11,9 @@ export type FilterCheckboxProps = {
 
 export const FilterCheckbox = ({ label, value, id, ...rest }: FilterCheckboxProps) => {
   const generatedId = useId()
+
   const checkboxId = id ?? `${generatedId}-checkbox`
+
   return (
     <label className={'flex items-center gap-3 cursor-pointer'}>
       <Checkbox value={value} id={checkboxId} {...rest} />

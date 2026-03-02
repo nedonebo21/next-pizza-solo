@@ -1,12 +1,15 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import qs from 'qs'
-import { Filters } from '@/features/browse-products/model/types'
 import { useRouter } from 'next/navigation'
+import qs from 'qs'
+import { useEffect, useRef } from 'react'
+
+import type { Filters } from '@/features/browse-products/model/types'
+
 
 export const useQueryFilters = (filters: Filters) => {
   const isMounted = useRef(false)
+
   const router = useRouter()
 
   useEffect(() => {
@@ -19,6 +22,7 @@ export const useQueryFilters = (filters: Filters) => {
       }
 
       const query = qs.stringify(params, { arrayFormat: 'comma' })
+
       router.push(`?${query}`, { scroll: false })
     }
 

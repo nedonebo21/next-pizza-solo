@@ -1,11 +1,15 @@
 'use client'
 
-import { Typography } from '@/shared/ui'
-import { ProductCard } from './product-card'
-import { RefObject, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useIntersection } from 'react-use'
-import { ProductWithRelations } from '@/entities/product'
+
 import { useCategoryStore } from '@/entities/category'
+import { Typography } from '@/shared/ui'
+
+import { ProductCard } from './product-card'
+
+import type { ProductWithRelations } from '@/entities/product'
+import type { RefObject } from 'react'
 
 type Props = {
   title: string
@@ -18,6 +22,7 @@ export const ProductsGroupList = ({ items, title, categoryId, className }: Props
   const setActiveCategoryId = useCategoryStore(state => state.setActiveId)
 
   const intersectionRef = useRef<HTMLDivElement>(null)
+
   const intersection = useIntersection(intersectionRef as RefObject<HTMLElement>, {
     threshold: 0.4,
   })

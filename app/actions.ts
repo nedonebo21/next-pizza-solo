@@ -1,15 +1,21 @@
 'use server'
 
-import { CheckoutFormValues, createPayment } from '@/features/checkout'
-import { prisma } from '../prisma/prisma-client'
+
 import { OrderStatus } from '@prisma/client'
 import { cookies } from 'next/headers'
+
+import { createPayment } from '@/features/checkout'
 import { sendEmail } from '@/shared/lib'
 import { PayOrder } from '@/shared/ui'
+
+import { prisma } from '../prisma/prisma-client'
+
+import type { CheckoutFormValues } from '@/features/checkout'
 
 export async function createOrder(data: CheckoutFormValues) {
   try {
     const cookieStore = await cookies()
+
     const cartToken = cookieStore.get('cartToken')?.value
 
     if (!cartToken) {

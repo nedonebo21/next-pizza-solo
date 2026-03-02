@@ -1,6 +1,8 @@
+import { mapPizzaType } from '@/entities/product'
 import { calcTotalPizzaPrice } from '@/widgets/choose-product/model/calc-total-pizza-price'
-import { mapPizzaType, PizzaSize, PizzaType } from '@/entities/product'
-import { Ingredient, ProductVariant } from '@prisma/client'
+
+import type { PizzaSize, PizzaType } from '@/entities/product'
+import type { Ingredient, ProductVariant } from '@prisma/client'
 
 export const getPizzaDetails = (
   type: PizzaType,
@@ -10,6 +12,7 @@ export const getPizzaDetails = (
   selectedIngredients: Set<number>
 ) => {
   const totalPrice = calcTotalPizzaPrice(type, size, variants, ingredients, selectedIngredients)
+
   const textDetails = `${size} см, ${mapPizzaType[type]} тесто`
 
   return { totalPrice, textDetails }

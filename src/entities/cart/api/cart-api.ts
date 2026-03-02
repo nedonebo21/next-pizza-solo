@@ -1,6 +1,6 @@
-import { CartDTO } from '../model/types'
-import { CreateCartItemValues } from '../model/types'
 import { ApiRoutes, axiosInstance } from '@/shared/api'
+
+import type { CartDTO , CreateCartItemValues } from '../model/types'
 
 export const getCart = async (): Promise<CartDTO> => {
   return (await axiosInstance.get<CartDTO>(ApiRoutes.CART)).data

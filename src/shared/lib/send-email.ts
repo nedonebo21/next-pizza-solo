@@ -1,5 +1,6 @@
 import { Resend } from 'resend'
-import { ReactNode } from 'react'
+
+import type { ReactNode } from 'react'
 
 export const sendEmail = async (to: string, subject: string, template: ReactNode) => {
   const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_TOKEN)

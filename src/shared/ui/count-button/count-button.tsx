@@ -1,6 +1,7 @@
 import { cn } from '@/shared/lib/utils'
-import { CountIconButtonProps } from '@/shared/ui/count-icon-button'
 import { Typography, CountIconButton } from '@/shared/ui'
+
+import type { CountIconButtonProps } from '@/shared/ui/count-icon-button'
 
 type CountButtonProps = {
   value?: number
@@ -16,14 +17,14 @@ export const CountButton = ({ className, onClick, value, size }: CountButtonProp
         onClick={() => onClick?.('minus')}
         disabled={value === 1}
         size={size}
-        type="minus"
+        type='minus'
       />
 
       <Typography className={size === 'sm' ? 'text-sm' : 'text-md'} as={'b'}>
         {value}
       </Typography>
 
-      <CountIconButton onClick={() => onClick?.('plus')} size={size} type="plus" />
+      <CountIconButton onClick={() => onClick?.('plus')} size={size} type='plus' />
     </div>
   )
 }

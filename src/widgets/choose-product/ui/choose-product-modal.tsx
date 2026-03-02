@@ -1,10 +1,12 @@
 'use client'
 
-import { Dialog, DialogContent } from '@/shared/ui'
 import { useRouter } from 'next/navigation'
+
 import { cn } from '@/shared/lib/utils'
-import { ProductWithRelations } from '@/entities/product'
+import { Dialog, DialogContent } from '@/shared/ui'
 import { ProductForm } from '@/widgets/choose-product'
+
+import type { ProductWithRelations } from '@/entities/product'
 
 type ChooseProductProps = {
   product: ProductWithRelations
@@ -13,6 +15,7 @@ type ChooseProductProps = {
 
 export const ChooseProductModal = ({ product, className }: ChooseProductProps) => {
   const router = useRouter()
+
   return (
     <Dialog open={!!product} onOpenChange={() => router.back()}>
       <DialogContent

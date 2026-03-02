@@ -1,7 +1,8 @@
 import { User } from 'lucide-react'
-import { Button } from '@/shared/ui'
 import { signIn } from 'next-auth/react'
+
 import { cn } from '@/shared/lib/utils'
+import { Button } from '@/shared/ui'
 
 type Props = {
   loginWith?: 'github' | 'google'
@@ -12,6 +13,7 @@ type Props = {
 
 export const SignInButton = ({ loginWith, onClick, isSignIn, className }: Props) => {
   const isGitHub = loginWith === 'github'
+
   const isGoogle = loginWith === 'google'
 
   const handleClick = () => {
@@ -34,8 +36,8 @@ export const SignInButton = ({ loginWith, onClick, isSignIn, className }: Props)
       {isGitHub && (
         <>
           <img
-            className="w-6 h-6"
-            src="https://github.githubassets.com/favicons/favicon.svg"
+            className='w-6 h-6'
+            src='https://github.githubassets.com/favicons/favicon.svg'
             alt={'gitLogo'}
           />
           GitHub
@@ -44,8 +46,8 @@ export const SignInButton = ({ loginWith, onClick, isSignIn, className }: Props)
       {isGoogle && (
         <>
           <img
-            className="w-6 h-6"
-            src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg"
+            className='w-6 h-6'
+            src='https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg'
             alt={'googleLogo'}
           />
           Google

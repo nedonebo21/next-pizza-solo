@@ -1,4 +1,4 @@
-import { Cart, CartItem, Ingredient, Product, ProductVariant } from '@prisma/client'
+import type { Cart, CartItem, Ingredient, Product, ProductVariant } from '@prisma/client'
 
 export type CartStateItem = {
   id: number

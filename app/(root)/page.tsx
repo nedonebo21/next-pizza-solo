@@ -1,5 +1,6 @@
 import { Home } from '@/pages/home'
-import { GetSearchParams } from '@/features/browse-products'
+
+import type { GetSearchParams } from '@/features/browse-products'
 
 type PageProps = {
   searchParams: GetSearchParams
@@ -7,5 +8,6 @@ type PageProps = {
 
 export default async function Page({ searchParams }: PageProps) {
   const resolvedParams = await searchParams
+
   return <Home searchParams={resolvedParams} />
 }

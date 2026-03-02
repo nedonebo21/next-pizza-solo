@@ -1,7 +1,10 @@
 'use client'
 
+import { useController } from 'react-hook-form'
+
 import { Textarea } from '@/shared/ui'
-import { Control, FieldValues, useController, UseControllerProps } from 'react-hook-form'
+
+import type { Control, FieldValues, UseControllerProps } from 'react-hook-form'
 
 type ControlledTextareaProps<T extends FieldValues> = {
   required?: boolean

@@ -1,7 +1,10 @@
 import { create } from 'zustand'
-import { getCartDetails } from './lib/get-cart-details'
-import { CartState, CreateCartItemValues } from './types'
+
 import * as cartApi from '../api/cart-api'
+
+import { getCartDetails } from './lib/get-cart-details'
+
+import type { CartState, CreateCartItemValues } from './types'
 
 export const useCartStore = create<CartState>((set, get) => ({
   items: [],
@@ -13,6 +16,7 @@ export const useCartStore = create<CartState>((set, get) => ({
     try {
       set({ loading: true, error: false })
       const data = await cartApi.getCart()
+
       set(getCartDetails(data))
     } catch (error) {
       console.error(error)
@@ -29,6 +33,7 @@ export const useCartStore = create<CartState>((set, get) => ({
         items: state.items.map(item => (item.id === id ? { ...item, disabled: true } : item)),
       }))
       const data = await cartApi.updateItemQuantity(id, quantity)
+
       set(getCartDetails(data))
     } catch (error) {
       console.error(error)
@@ -41,6 +46,7 @@ export const useCartStore = create<CartState>((set, get) => ({
     try {
       set({ loading: true, error: false })
       const data = await cartApi.addCartItem(values)
+
       set(getCartDetails(data))
     } catch (error) {
       console.error(error)
@@ -57,6 +63,7 @@ export const useCartStore = create<CartState>((set, get) => ({
         items: state.items.map(item => (item.id === id ? { ...item, disabled: true } : item)),
       }))
       const data = await cartApi.removeCartItem(id)
+
       set(getCartDetails(data))
     } catch (error) {
       console.error(error)

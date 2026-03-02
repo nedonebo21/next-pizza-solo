@@ -1,10 +1,14 @@
 'use client'
 
-import { useCart } from '@/entities/cart'
 import toast from 'react-hot-toast'
-import { ProductWithRelations } from '@/entities/product'
+
+import { useCart } from '@/entities/cart'
+
+
 import { ChoosePizzaForm } from './choose-pizza-form'
 import { ChooseProductForm } from './choose-product-form'
+
+import type { ProductWithRelations } from '@/entities/product'
 
 type ProductFormProps = {
   product: ProductWithRelations
@@ -32,6 +36,7 @@ export const ProductForm = ({ product, onSubmit: _onSubmit }: ProductFormProps) 
   }
 
   const firstItem = product.variants[0]
+
   const isPizza = !!firstItem.pizzaType
 
   return isPizza ? (

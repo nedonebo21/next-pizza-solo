@@ -1,6 +1,7 @@
-import { Button, Dialog, DialogContent } from '@/shared/ui'
-import { LoginForm, RegisterForm, SignInButton } from '@/features/auth'
 import { useState } from 'react'
+
+import { LoginForm, RegisterForm, SignInButton } from '@/features/auth'
+import { Button, Dialog, DialogContent } from '@/shared/ui'
 
 type AuthModalProps = {
   open: boolean
@@ -17,6 +18,7 @@ export const AuthModal = ({ open, onClose }: AuthModalProps) => {
   const handleClose = () => {
     onClose()
   }
+
   return (
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className={'w-[450px] bg-white p-10'}>

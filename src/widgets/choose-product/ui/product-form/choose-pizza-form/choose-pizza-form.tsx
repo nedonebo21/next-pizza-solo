@@ -1,8 +1,10 @@
+import { pizzaTypes } from '@/entities/product'
 import { cn } from '@/shared/lib/utils'
 import { GroupVariants, IngredientItem, ProductImage, Typography, Button } from '@/shared/ui'
-import { Ingredient, ProductVariant } from '@prisma/client'
-import { PizzaSize, PizzaType, pizzaTypes } from '@/entities/product'
 import { getPizzaDetails, usePizzaOptions } from '@/widgets/choose-product/model'
+
+import type { PizzaSize, PizzaType } from '@/entities/product'
+import type { Ingredient, ProductVariant } from '@prisma/client'
 
 type ChoosePizzaFormProps = {
   className?: string
@@ -54,6 +56,7 @@ export const ChoosePizzaForm = ({
     if (!currentItemId) {
       return
     }
+
     onSubmit(currentItemId, Array.from(selectedIngredients))
   }
 
@@ -76,6 +79,7 @@ export const ChoosePizzaForm = ({
           <div className={'grid grid-cols-3 gap-3'}>
             {ingredients.map(ingredient => {
               const isActive = selectedIngredients.has(ingredient.id)
+
               const handleIngredientAdd = () => addIngredient(ingredient.id)
 
               return (

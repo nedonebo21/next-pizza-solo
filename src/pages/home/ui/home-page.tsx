@@ -1,8 +1,13 @@
+import { Suspense } from 'react'
+
+import { FilterProducts, findPizzas } from '@/features/browse-products'
 import { Container, Typography } from '@/shared/ui'
 import { TopBar } from '@/widgets/top-bar'
-import { FilterProducts, findPizzas, GetSearchParams } from '@/features/browse-products'
+
 import { ProductsGroupList } from './products-group-list'
-import { Suspense } from 'react'
+
+import type { GetSearchParams } from '@/features/browse-products'
+
 
 export const Home = async ({ searchParams }: { searchParams: GetSearchParams }) => {
   const categories = await findPizzas(searchParams)

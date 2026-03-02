@@ -1,20 +1,25 @@
 'use client'
 
-import type { ChangeEvent, ComponentProps } from 'react'
-import { useState, useRef } from 'react'
 import { Search } from 'lucide-react'
-import { cn } from '@/shared/lib/utils'
-import { useClickAway, useDebounce } from 'react-use'
 import Link from 'next/link'
+import { useState, useRef } from 'react'
+import { useClickAway, useDebounce } from 'react-use'
+
+import { cn } from '@/shared/lib/utils'
 import { Typography } from '@/shared/ui'
-import { Product } from '@prisma/client'
+
 import * as productApi from '../../api/product-api'
+
+import type { Product } from '@prisma/client'
+import type { ChangeEvent, ComponentProps } from 'react'
 
 type SearchInputProps = Omit<ComponentProps<'input'>, 'children'>
 
 export const SearchProducts = ({ className, ...rest }: SearchInputProps) => {
   const [searchQuery, setSearchQuery] = useState('')
+
   const [focused, setFocused] = useState(false)
+
   const [products, setProducts] = useState<Product[]>([])
 
   const ref = useRef(null)
@@ -35,6 +40,7 @@ export const SearchProducts = ({ className, ...rest }: SearchInputProps) => {
     async () => {
       try {
         const res = await productApi.search(searchQuery)
+
         setProducts(res)
       } catch (e) {
         console.error(e)

@@ -1,5 +1,6 @@
-import { Ingredient, ProductVariant } from '@prisma/client'
-import { PizzaSize, PizzaType } from '@/entities/product'
+import type { PizzaSize, PizzaType } from '@/entities/product'
+import type { Ingredient, ProductVariant } from '@prisma/client'
+
 
 /**
  * Функция для вычисления стоимости пиццы
@@ -24,6 +25,7 @@ export const calcTotalPizzaPrice = (
 ) => {
   const pizzaPrice =
     variants.find(variant => variant.pizzaType === type && variant.size === size)?.price ?? 0
+
   const ingredientsPrice = ingredients
     .filter(ingredient => selectedIngredients.has(ingredient.id))
     .reduce((acc, ingredient) => acc + ingredient.price, 0)

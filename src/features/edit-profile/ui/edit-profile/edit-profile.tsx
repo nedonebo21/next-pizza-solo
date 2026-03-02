@@ -1,14 +1,18 @@
 'use client'
 
-import { User } from '@prisma/client'
-import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { registerFormSchema, RegisterFormValues } from '@/entities/user'
-import toast from 'react-hot-toast'
 import { signOut } from 'next-auth/react'
-import { Button, Container, Typography } from '@/shared/ui'
-import { ControlledInput } from '@/shared/forms'
+import { FormProvider, useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
+
+import { registerFormSchema } from '@/entities/user'
 import { updateUser } from '@/features/edit-profile/api/update-user'
+import { ControlledInput } from '@/shared/forms'
+import { Button, Container, Typography } from '@/shared/ui'
+
+import type { RegisterFormValues } from '@/entities/user'
+import type { User } from '@prisma/client'
+import type { SubmitHandler } from 'react-hook-form'
 
 type EditProfileProps = {
   user: User

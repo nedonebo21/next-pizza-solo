@@ -1,6 +1,9 @@
-import { cn } from '@/shared/lib/utils'
-import { CartItemImage, CartItemInfo, CartItemPrice, CartItemProps, CountButton } from '@/shared/ui'
 import { XIcon } from 'lucide-react'
+
+import { cn } from '@/shared/lib/utils'
+import { CartItemImage, CartItemInfo, CartItemPrice, CountButton } from '@/shared/ui'
+
+import type { CartItemProps } from '@/shared/ui'
 
 type Props = CartItemProps & {
   className?: string
@@ -35,7 +38,7 @@ export const CheckoutItem = ({
       <CartItemPrice value={price} />
       <div className={'flex items-center gap-5 ml-20'}>
         <CountButton value={quantity} onClick={onQuantityUpdate} />
-        <button type="button" onClick={onItemRemove} disabled={disabled}>
+        <button type='button' onClick={onItemRemove} disabled={disabled}>
           <XIcon className={'text-gray-400 cursor-pointer hover:text-gray-600'} size={20} />
         </button>
       </div>

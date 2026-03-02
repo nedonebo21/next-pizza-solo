@@ -1,8 +1,10 @@
-import { ComponentProps } from 'react'
+
+import { FilterCategory } from '@/features/filter-category'
 import { cn } from '@/shared/lib/utils'
 import { Container, SortPopup } from '@/shared/ui'
-import { FilterCategory } from '@/features/filter-category'
-import { Category } from '@prisma/client'
+
+import type { Category } from '@prisma/client'
+import type { ComponentProps } from 'react'
 
 type TopBarProps = {
   categories: Category[]

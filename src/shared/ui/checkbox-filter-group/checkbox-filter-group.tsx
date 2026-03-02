@@ -1,9 +1,12 @@
 'use client'
 
-import { ChangeEvent, useState } from 'react'
-import type { FilterCheckboxProps } from '@/shared/ui/filter-checkbox'
-import { Input, Skeleton, FilterCheckbox } from '@/shared/ui'
+import { useState } from 'react'
+
 import { cn } from '@/shared/lib/utils'
+import { Input, Skeleton, FilterCheckbox } from '@/shared/ui'
+
+import type { FilterCheckboxProps } from '@/shared/ui/filter-checkbox'
+import type { ChangeEvent } from 'react'
 
 type Item = FilterCheckboxProps
 
@@ -30,6 +33,7 @@ export const CheckboxFilterGroup = ({
   selectedItems,
 }: Props) => {
   const [showAll, setShowAll] = useState(false)
+
   const [searchValue, setSearchValue] = useState('')
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -46,13 +50,13 @@ export const CheckboxFilterGroup = ({
   if (isLoading) {
     return (
       <div className={className}>
-        <p className="font-bold mb-3">{title}</p>
+        <p className='font-bold mb-3'>{title}</p>
 
         {...Array(limit)
           .fill(0)
-          .map((_, index) => <Skeleton key={index} className="h-6 mb-4 rounded-[8px]" />)}
+          .map((_, index) => <Skeleton key={index} className='h-6 mb-4 rounded-[8px]' />)}
 
-        <Skeleton className="w-28 h-6 mb-4 rounded-[8px]" />
+        <Skeleton className='w-28 h-6 mb-4 rounded-[8px]' />
       </div>
     )
   }

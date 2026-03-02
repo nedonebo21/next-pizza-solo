@@ -1,16 +1,19 @@
 'use client'
 
-import { cn } from '@/shared/lib/utils'
-
-import { ComponentProps, useEffect, useState } from 'react'
-import { Container } from '@/shared/ui'
-import { SearchProducts } from '@/features/browse-products'
-import { CartButton } from '@/widgets/cart-drawer'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
-import { ProfileButton } from '@/widgets/profile-button/ui/profile-button'
-import { HeaderLogo } from './header-logo'
+
+import { SearchProducts } from '@/features/browse-products'
+import { cn } from '@/shared/lib/utils'
+import { Container } from '@/shared/ui'
 import { AuthModal } from '@/widgets/auth-modal/ui/auth-modal'
+import { CartButton } from '@/widgets/cart-drawer'
+import { ProfileButton } from '@/widgets/profile-button/ui/profile-button'
+
+import { HeaderLogo } from './header-logo'
+
+import type { ComponentProps } from 'react'
 
 type HeaderProps = {
   hasSearch?: boolean
@@ -19,7 +22,9 @@ type HeaderProps = {
 
 export const Header = ({ className, hasSearch = true, hasCart = true, ...rest }: HeaderProps) => {
   const router = useRouter()
+
   const searchParams = useSearchParams()
+
   const [isOpen, setIsOpen] = useState(false)
 
   const handleOpenChange = () => {
@@ -43,7 +48,7 @@ export const Header = ({ className, hasSearch = true, hasCart = true, ...rest }:
         toast.success(toastMessage, { duration: 3000 })
       }, 500)
     }
-  }, [])
+  }, [router, searchParams])
 
   return (
     <header className={cn('border-b', className)} {...rest}>

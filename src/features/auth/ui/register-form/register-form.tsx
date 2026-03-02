@@ -1,10 +1,16 @@
-import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
-import { registerFormSchema, RegisterFormValues } from '@/entities/user'
+
+
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Button, Typography } from '@/shared/ui'
-import { ControlledInput } from '@/shared/forms'
+import { FormProvider, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
+
+import { registerFormSchema } from '@/entities/user'
 import { registerUser } from '@/features/auth/api/register-user'
+import { ControlledInput } from '@/shared/forms'
+import { Button, Typography } from '@/shared/ui'
+
+import type { RegisterFormValues } from '@/entities/user'
+import type { SubmitHandler } from 'react-hook-form'
 
 type RegisterFormProps = {
   onClose?: () => void

@@ -1,6 +1,7 @@
-import { Skeleton, Typography } from '@/shared/ui'
 import { cn } from '@/shared/lib/utils'
-import { ReactNode } from 'react'
+import { Skeleton, Typography } from '@/shared/ui'
+
+import type { ReactNode } from 'react'
 
 type CheckoutItemDetailsProps = {
   className?: string

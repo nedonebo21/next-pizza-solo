@@ -1,10 +1,14 @@
-import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
-import { loginFormSchema, LoginFormValues } from '@/entities/user'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Button, Typography } from '@/shared/ui'
-import { ControlledInput } from '@/shared/forms'
-import toast from 'react-hot-toast'
 import { signIn } from 'next-auth/react'
+import { FormProvider, useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
+
+import { loginFormSchema } from '@/entities/user'
+import { ControlledInput } from '@/shared/forms'
+import { Button, Typography } from '@/shared/ui'
+
+import type { LoginFormValues } from '@/entities/user'
+import type { SubmitHandler } from 'react-hook-form'
 
 type LoginFormProps = {
   onClose?: () => void

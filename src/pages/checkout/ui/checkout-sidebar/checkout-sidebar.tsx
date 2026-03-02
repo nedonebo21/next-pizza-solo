@@ -1,6 +1,8 @@
-import { Button, Card, Skeleton, Typography } from '@/shared/ui'
-import { DeliveryDetails } from './delivery-details'
 import { ArrowRight, Package, Percent, Truck } from 'lucide-react'
+
+import { Button, Card, Skeleton, Typography } from '@/shared/ui'
+
+import { DeliveryDetails } from './delivery-details'
 
 type CheckoutSidebarProps = {
   totalAmount: number
@@ -9,8 +11,11 @@ type CheckoutSidebarProps = {
 }
 export const CheckoutSidebar = ({ totalAmount, isLoading, isSubmitting }: CheckoutSidebarProps) => {
   const taxPrice = totalAmount / 10
+
   const deliveryPrice = 120
+
   const totalPrice = taxPrice + totalAmount + deliveryPrice
+
   return (
     <div className={'w-[450px]'}>
       <Card className={'p-6 sticky top-4'}>

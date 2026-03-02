@@ -1,23 +1,32 @@
 'use client'
 
-import { Container, Typography } from '@/shared/ui'
-import { useCart } from '@/entities/cart'
-import { CheckoutSidebar } from './checkout-sidebar'
-import { CheckoutItems } from './checkout-items'
-import { CheckoutAddressForm, CheckoutForm, CheckoutPersonalForm } from '@/features/checkout'
-import { CheckoutFormValues } from '@/features/checkout'
-import { SubmitHandler } from 'react-hook-form'
-import { cn } from '@/shared/lib/utils'
-import { createOrder } from '../../../../app/actions'
-import toast from 'react-hot-toast'
 import { useState } from 'react'
+import toast from 'react-hot-toast'
+
+import { useCart } from '@/entities/cart'
+import { CheckoutAddressForm, CheckoutForm, CheckoutPersonalForm  } from '@/features/checkout'
+import { cn } from '@/shared/lib/utils'
+import { Container, Typography } from '@/shared/ui'
+
+import { createOrder } from '../../../../app/actions'
+
+import { CheckoutItems } from './checkout-items'
+import { CheckoutSidebar } from './checkout-sidebar'
+
+import type { CheckoutFormValues } from '@/features/checkout'
+import type { SubmitHandler } from 'react-hook-form'
+
+
+
 
 export const CheckoutPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
+
   const { totalAmount, updateItemQuantity, removeCartItem, items, loading } = useCart()
 
   const handleQuantityUpdate = (id: number, quantity: number, type: 'plus' | 'minus') => {
     const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1
+
     updateItemQuantity(id, newQuantity)
   }
 
@@ -25,6 +34,7 @@ export const CheckoutPage = () => {
     try {
       setIsSubmitting(true)
       const url = await createOrder(data)
+
       toast.success('Заказ успешно создан! Переход на страницу оплаты')
       if (url) {
         location.href = url

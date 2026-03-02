@@ -1,6 +1,8 @@
-import { ComponentProps, ReactNode } from 'react'
+
 import { cn } from '@/shared/lib/utils'
 import { Typography } from '@/shared/ui'
+
+import type { ComponentProps, ReactNode } from 'react'
 
 type CardProps = {
   title?: string

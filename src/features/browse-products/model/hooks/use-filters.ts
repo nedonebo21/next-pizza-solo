@@ -1,10 +1,12 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
-import { useSet } from 'react-use'
 import { useState } from 'react'
+import { useSet } from 'react-use'
+
 import { PRICE_MAX, PRICE_MIN } from '@/features/browse-products/model/constants'
-import { Filters, PriceRange } from '@/features/browse-products/model/types'
+
+import type { Filters, PriceRange } from '@/features/browse-products/model/types'
 
 type QueryFilters = PriceRange & {
   pizzaTypes: string

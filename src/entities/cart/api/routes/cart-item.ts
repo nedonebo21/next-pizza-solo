@@ -1,10 +1,15 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '../../../../../prisma/prisma-client'
+import { NextResponse } from 'next/server'
+
 import { updateCartTotalAmount } from '@/entities/cart'
+
+import { prisma } from '../../../../../prisma/prisma-client'
+
+import type { NextRequest } from 'next/server'
 
 export async function PATCH(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
     const params = await context.params
+
     const id = Number(params.id)
 
     if (!Number.isInteger(id)) {
@@ -12,6 +17,7 @@ export async function PATCH(req: NextRequest, context: { params: Promise<{ id: s
     }
 
     const data = (await req.json()) as { quantity: number }
+
     const token = req.cookies.get('cartToken')?.value
 
     if (!token) {
@@ -42,6 +48,7 @@ export async function PATCH(req: NextRequest, context: { params: Promise<{ id: s
     return NextResponse.json(updatedUserCart)
   } catch (error) {
     console.error(error)
+
     return NextResponse.json({ message: '[CART_PATCH] Server Error' }, { status: 500 })
   }
 }
@@ -49,7 +56,9 @@ export async function PATCH(req: NextRequest, context: { params: Promise<{ id: s
 export async function DELETE(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
     const params = await context.params
+
     const id = Number(params.id)
+
     const token = req.cookies.get('cartToken')?.value
 
     if (!Number.isInteger(id)) {
@@ -81,6 +90,7 @@ export async function DELETE(req: NextRequest, context: { params: Promise<{ id: 
     return NextResponse.json(updatedUserCart)
   } catch (error) {
     console.error(error)
+
     return NextResponse.json({ message: 'Cannot delete item from cart' }, { status: 500 })
   }
 }

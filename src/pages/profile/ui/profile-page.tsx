@@ -1,7 +1,10 @@
-import { getUserSession } from '@/entities/user'
 import { redirect } from 'next/navigation'
-import { prisma } from '../../../../prisma/prisma-client'
+
+import { getUserSession } from '@/entities/user'
 import { EditProfile } from '@/features/edit-profile'
+
+import { prisma } from '../../../../prisma/prisma-client'
+
 
 export const ProfilePage = async () => {
   const session = await getUserSession()

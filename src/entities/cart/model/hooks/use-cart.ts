@@ -1,10 +1,13 @@
 'use client'
 
-import { CreateCartItemValues } from '@/entities/cart'
-import { useCartStore } from '../cart'
-import { useShallow } from 'zustand/shallow'
 import { useEffect } from 'react'
-import { CartStateItem } from '../types'
+import { useShallow } from 'zustand/shallow'
+
+
+import { useCartStore } from '../cart'
+
+import type { CartStateItem } from '../types'
+import type { CreateCartItemValues } from '@/entities/cart'
 
 type ReturnProps = {
   totalAmount: number

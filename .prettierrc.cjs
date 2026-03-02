@@ -1,3 +1,3 @@
 module.exports = {
-  ..."@philian73/prettier-config",
-};
+  ...'@philian73/prettier-config',
+}

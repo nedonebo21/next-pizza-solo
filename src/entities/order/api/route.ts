@@ -1,10 +1,15 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { PaymentCallbackData } from '@/features/checkout'
-import { prisma } from '../../../../prisma/prisma-client'
+
 import { OrderStatus } from '@prisma/client'
-import { CartItemDTO } from '@/entities/cart'
+import { NextResponse } from 'next/server'
+
 import { sendEmail } from '@/shared/lib'
 import { OrderSuccess } from '@/shared/ui'
+
+import { prisma } from '../../../../prisma/prisma-client'
+
+import type { CartItemDTO } from '@/entities/cart'
+import type { PaymentCallbackData } from '@/features/checkout'
+import type { NextRequest } from 'next/server'
 
 export async function POST(req: NextRequest) {
   try {
@@ -43,6 +48,7 @@ export async function POST(req: NextRequest) {
     }
   } catch (error) {
     console.error(error)
+
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
   }
 }

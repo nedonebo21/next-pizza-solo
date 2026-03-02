@@ -1,4 +1,4 @@
-import { CartItemDTO } from '@/entities/cart'
+import type { CartItemDTO } from '@/entities/cart'
 
 type OrderSuccessProps = {
   orderId: number

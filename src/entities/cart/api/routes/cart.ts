@@ -1,7 +1,11 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
+
+import { getOrCreateCart, updateCartTotalAmount  } from '@/entities/cart'
+
 import { prisma } from '../../../../../prisma/prisma-client'
-import { getOrCreateCart, updateCartTotalAmount } from '@/entities/cart'
-import { CreateCartItemValues } from '@/entities/cart'
+
+import type { CreateCartItemValues } from '@/entities/cart'
+import type { NextRequest } from 'next/server'
 
 export async function GET(req: NextRequest) {
   try {
@@ -35,6 +39,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(userCart)
   } catch (error) {
     console.error(error)
+
     return NextResponse.json({ message: 'Cannot get cart' }, { status: 500 })
   }
 }
@@ -87,10 +92,13 @@ export async function POST(req: NextRequest) {
     const updatedUserCart = await updateCartTotalAmount(token)
 
     const res = NextResponse.json(updatedUserCart)
+
     res.cookies.set('cartToken', token)
+
     return res
   } catch (error) {
     console.error(error)
+
     return NextResponse.json({ message: 'Cannot create cart' }, { status: 500 })
   }
 }

@@ -1,5 +1,6 @@
-import { cn } from '@/shared/lib/utils'
 import { CircleCheck } from 'lucide-react'
+
+import { cn } from '@/shared/lib/utils'
 import { Typography } from '@/shared/ui'
 
 type IngredientProps = {

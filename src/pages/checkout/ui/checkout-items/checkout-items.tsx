@@ -1,8 +1,10 @@
-import type { CartStateItem } from '@/entities/cart'
 import { getCartItemDetails } from '@/entities/cart'
-import { CheckoutItem } from './checkout-item'
-import { PizzaSize, PizzaType } from '@/entities/product'
 import { Card, CheckoutItemSkeleton } from '@/shared/ui'
+
+import { CheckoutItem } from './checkout-item'
+
+import type { CartStateItem } from '@/entities/cart'
+import type { PizzaSize, PizzaType } from '@/entities/product'
 
 type CheckoutItemsProps = {
   items: CartStateItem[]

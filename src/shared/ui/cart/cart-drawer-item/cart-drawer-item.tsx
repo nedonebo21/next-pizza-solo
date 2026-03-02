@@ -1,6 +1,7 @@
+import { Trash2Icon } from 'lucide-react'
+
 import { cn } from '@/shared/lib/utils'
 import { CartItemImage, CartItemInfo, CartItemPrice, CountButton } from '@/shared/ui'
-import { Trash2Icon } from 'lucide-react'
 
 export type CartItemProps = {
   id: number

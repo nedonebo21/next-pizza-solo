@@ -1,5 +1,7 @@
-import { mapPizzaType, PizzaSize, PizzaType } from '@/entities/product'
-import { CartStateItem } from '@/entities/cart/model/types'
+import { mapPizzaType } from '@/entities/product'
+
+import type { CartStateItem } from '@/entities/cart/model/types'
+import type { PizzaSize, PizzaType } from '@/entities/product'
 
 export const getCartItemDetails = (
   ingredients: CartStateItem['ingredients'],
@@ -10,6 +12,7 @@ export const getCartItemDetails = (
 
   if (pizzaSize && pizzaType) {
     const typeName = mapPizzaType[pizzaType]
+
     details.push(`${typeName} ${pizzaSize} см`)
   }
 

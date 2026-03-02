@@ -1,16 +1,20 @@
 'use client'
 
-import { ComponentProps } from 'react'
-import { Input, Typography, RangeSlider, CheckboxFilterGroup } from '@/shared/ui'
+import { pizzaSizesItems, pizzaTypesItems } from '@/entities/product'
 import { PRICE_MAX, PRICE_MIN, PRICE_STEP } from '@/features/browse-products/model/constants'
 import { useIngredients, useFilters, useQueryFilters } from '@/features/browse-products/model/hooks'
-import { pizzaSizesItems, pizzaTypesItems } from '@/entities/product'
+import { Input, Typography, RangeSlider, CheckboxFilterGroup } from '@/shared/ui'
+
+import type { ComponentProps } from 'react'
+
 
 type ProductFiltersProps = Omit<ComponentProps<'div'>, 'children'>
 
 export const FilterProducts = ({ className, ...rest }: ProductFiltersProps) => {
   const { ingredients, isLoading } = useIngredients()
+
   const filters = useFilters()
+
   useQueryFilters(filters)
 
   const items = ingredients.map(item => ({ value: String(item.id), label: item.name }))

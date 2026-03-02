@@ -1,7 +1,10 @@
 'use client'
 
+import { useController } from 'react-hook-form'
+
 import { ClearButton, Input, RequiredSymbol, Typography } from '@/shared/ui'
-import { Control, FieldValues, useController, UseControllerProps } from 'react-hook-form'
+
+import type { Control, FieldValues, UseControllerProps } from 'react-hook-form'
 
 type ControlledInputProps<T extends FieldValues> = {
   label?: string
@@ -36,7 +39,9 @@ export const ControlledInput = <T extends FieldValues>({
   }
 
   const isError = !!errorMessage
+
   const isClearable = !!value
+
   return (
     <label className={className}>
       {label && (

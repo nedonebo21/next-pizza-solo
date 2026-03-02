@@ -1,10 +1,14 @@
 'use server'
 
-import { Prisma } from '@prisma/client'
-import { prisma } from '../../../../prisma/prisma-client'
+
 import { hashSync } from 'bcrypt'
+
 import { sendEmail } from '@/shared/lib'
 import { UserVerification } from '@/shared/ui'
+
+import { prisma } from '../../../../prisma/prisma-client'
+
+import type { Prisma } from '@prisma/client'
 
 export const registerUser = async (body: Prisma.UserCreateInput) => {
   try {

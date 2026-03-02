@@ -1,8 +1,10 @@
-import { useSession } from 'next-auth/react'
-import { SignInButton } from '@/features/auth'
-import Link from 'next/link'
-import { Button } from '@/shared/ui'
 import { CircleUser } from 'lucide-react'
+import Link from 'next/link'
+import { useSession } from 'next-auth/react'
+
+import { SignInButton } from '@/features/auth'
+import { Button } from '@/shared/ui'
+
 
 type ProfileButtonProps = {
   className?: string
@@ -10,7 +12,9 @@ type ProfileButtonProps = {
 }
 export const ProfileButton = ({ className, onClick }: ProfileButtonProps) => {
   const { data: session } = useSession()
+
   const isAuth = !!session
+
   return (
     <div className={className}>
       {!isAuth ? (

@@ -1,11 +1,13 @@
 'use client'
 
-import { Typography, Button } from '@/shared/ui'
 import { Separator } from '@radix-ui/react-select'
 import { ArrowRight, ShoppingCart } from 'lucide-react'
-import { cn } from '@/shared/lib/utils'
-import { CartDrawer } from './cart-drawer'
+
 import { useCart } from '@/entities/cart'
+import { cn } from '@/shared/lib/utils'
+import { Typography, Button } from '@/shared/ui'
+
+import { CartDrawer } from './cart-drawer'
 
 type CartButtonProps = {
   className?: string
@@ -13,6 +15,7 @@ type CartButtonProps = {
 
 export const CartButton = ({ className }: CartButtonProps) => {
   const { items, totalAmount, loading } = useCart()
+
   return (
     <CartDrawer>
       <Button

@@ -1,4 +1,5 @@
 import { PRICE_MAX, PRICE_MIN } from '@/features/browse-products/model/constants'
+
 import { prisma } from '../../../../../prisma/prisma-client'
 
 export type GetSearchParams = {
@@ -13,10 +14,13 @@ export type GetSearchParams = {
 
 export const findPizzas = async (params: GetSearchParams) => {
   const sizes = params.sizes?.split(',').map(Number)
+
   const pizzaTypes = params.pizzaTypes?.split(',').map(Number)
+
   const ingredientsId = params.ingredients?.split(',').map(Number)
 
   const minPrice = Number(params.min) || PRICE_MIN
+
   const maxPrice = Number(params.max) || PRICE_MAX
 
   return await prisma.category.findMany({

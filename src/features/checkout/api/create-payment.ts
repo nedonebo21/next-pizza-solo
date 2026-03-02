@@ -1,5 +1,6 @@
 import { axiosInstance } from '@/shared/api'
-import { PaymentData } from '@/features/checkout/model/types'
+
+import type { PaymentData } from '@/features/checkout/model/types'
 
 type createPaymentProps = {
   description: string

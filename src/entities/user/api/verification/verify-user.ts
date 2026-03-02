@@ -1,9 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
+
 import { prisma } from '../../../../../prisma/prisma-client'
+
+import type { NextRequest } from 'next/server'
 
 export async function GET(req: NextRequest) {
   try {
     const code = req.nextUrl.searchParams.get('code')
+
     if (!code) {
       return NextResponse.json({ error: 'Код не найден' }, { status: 400 })
     }

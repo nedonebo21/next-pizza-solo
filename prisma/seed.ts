@@ -1,7 +1,9 @@
 import { hashSync } from 'bcrypt'
-import { prisma } from './prisma-client'
+
 import { categories, ingredients, products } from './constants'
-import { Prisma } from '@prisma/client'
+import { prisma } from './prisma-client'
+
+import type { Prisma } from '@prisma/client'
 
 const randomNumber = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min) * 10 + min * 10) / 10
