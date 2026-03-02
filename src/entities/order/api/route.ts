@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { OrderSuccess, PaymentCallbackData } from '@/features/checkout'
+import { PaymentCallbackData } from '@/features/checkout'
 import { prisma } from '../../../../prisma/prisma-client'
 import { OrderStatus } from '@prisma/client'
 import { CartItemDTO } from '@/entities/cart'
 import { sendEmail } from '@/shared/lib'
+import { OrderSuccess } from '@/shared/ui'
 
 export async function POST(req: NextRequest) {
   try {

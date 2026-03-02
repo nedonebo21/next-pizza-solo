@@ -47,7 +47,7 @@ export const EditProfile = ({ user }: EditProfileProps) => {
   return (
     <Container className={'my-10'}>
       <Typography textAlign={'center'} variant={'subtitle'}>
-        Личные данные | ${user.id}
+        Личные данные | #{user.id}
       </Typography>
       <FormProvider {...form}>
         <form

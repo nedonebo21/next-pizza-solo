@@ -6,7 +6,7 @@ import { ComponentProps, useEffect, useState } from 'react'
 import { Container } from '@/shared/ui'
 import { SearchProducts } from '@/features/browse-products'
 import { CartButton } from '@/widgets/cart-drawer'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import toast from 'react-hot-toast'
 import { ProfileButton } from '@/widgets/profile-button/ui/profile-button'
 import { HeaderLogo } from './header-logo'
@@ -18,6 +18,7 @@ type HeaderProps = {
 } & Omit<ComponentProps<'header'>, 'children'>
 
 export const Header = ({ className, hasSearch = true, hasCart = true, ...rest }: HeaderProps) => {
+  const router = useRouter()
   const searchParams = useSearchParams()
   const [isOpen, setIsOpen] = useState(false)
 
@@ -26,9 +27,20 @@ export const Header = ({ className, hasSearch = true, hasCart = true, ...rest }:
   }
 
   useEffect(() => {
+    let toastMessage = ''
+
     if (searchParams?.has('paid')) {
+      toastMessage = 'Заказ успешно оплачен'
+    }
+
+    if (searchParams?.has('verified')) {
+      toastMessage = 'Почта успешно подтверждена'
+    }
+
+    if (toastMessage) {
       setTimeout(() => {
-        toast.success('Заказ успешно оплачен!')
+        router.replace('/')
+        toast.success(toastMessage, { duration: 3000 })
       }, 500)
     }
   }, [])
