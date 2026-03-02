@@ -1,3 +1,5 @@
+'use server'
+
 import { authOptions } from '@/app/api/next-auth'
 import { getServerSession } from 'next-auth'
 

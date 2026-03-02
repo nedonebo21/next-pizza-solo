@@ -6,6 +6,7 @@ import { OrderStatus } from '@prisma/client'
 import { cookies } from 'next/headers'
 import { sendEmail } from '@/shared/lib'
 import { PayOrder } from '@/features/checkout'
+export { updateUser as default } from '@/features/edit-profile/api/update-user'
 
 export async function createOrder(data: CheckoutFormValues) {
   try {
