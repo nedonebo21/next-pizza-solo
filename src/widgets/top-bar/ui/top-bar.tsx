@@ -1,4 +1,3 @@
-
 import { FilterCategory } from '@/features/filter-category'
 import { cn } from '@/shared/lib/utils'
 import { Container, SortPopup } from '@/shared/ui'

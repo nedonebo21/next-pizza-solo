@@ -7,7 +7,6 @@ import { Card } from '@/shared/ui'
 
 import type { CheckoutFormValues } from '@/features/checkout/model'
 
-
 type CheckoutPersonalFormProps = {
   className?: string
 }

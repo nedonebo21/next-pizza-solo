@@ -12,10 +12,10 @@ export type CountIconButtonProps = {
 export const CountIconButton = ({ size = 'sm', disabled, type, onClick }: CountIconButtonProps) => {
   return (
     <Button
-      variant='outline'
+      variant="outline"
       disabled={disabled}
       onClick={onClick}
-      type='button'
+      type="button"
       className={cn(
         'p-0 hover:bg-primary hover:text-white disabled:bg-white disabled:border-gray-400 disabled:text-gray-400',
         size === 'sm' ? 'w-[30px] h-[30px] rounded-[10px]' : 'w-[38px] h-[38px] rounded-md'

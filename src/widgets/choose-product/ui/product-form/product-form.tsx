@@ -4,7 +4,6 @@ import toast from 'react-hot-toast'
 
 import { useCart } from '@/entities/cart'
 
-
 import { ChoosePizzaForm } from './choose-pizza-form'
 import { ChooseProductForm } from './choose-product-form'
 

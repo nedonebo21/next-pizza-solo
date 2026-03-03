@@ -7,7 +7,8 @@ import Link from 'next/link'
 import { getCartItemDetails, useCart } from '@/entities/cart'
 import { ApiRoutes } from '@/shared/api'
 import { cn } from '@/shared/lib/utils'
-import { CartDrawerItem ,
+import {
+  CartDrawerItem,
   Sheet,
   SheetClose,
   SheetContent,
@@ -57,7 +58,7 @@ export const CartDrawer = ({ children }: CartDrawerProps) => {
             <div className={'flex flex-col items-center justify-center w-72 mx-auto'}>
               <Image
                 src={'https://cdn.dodostatic.net/pizza-site/dist/assets/5aa5dac99a832c62f3ef..svg'}
-                alt='Empty Cart'
+                alt="Empty Cart"
                 width={120}
                 height={120}
               />

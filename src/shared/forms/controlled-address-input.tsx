@@ -3,7 +3,6 @@
 import { AddressSuggestions } from 'react-dadata'
 import { useController } from 'react-hook-form'
 
-
 import { RequiredSymbol, Typography } from '@/shared/ui'
 
 import type { DaDataAddress, DaDataSuggestion } from 'react-dadata'
@@ -68,16 +67,16 @@ export const ControlledAddressInput = <T extends FieldValues>({
         token={process.env.NEXT_PUBLIC_DADATA_TOKEN!}
         value={suggestionValue}
         onChange={handleAddressChange}
-        containerClassName='w-full'
+        containerClassName="w-full"
         inputProps={{
           className:
             'w-full h-12 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent',
           placeholder: rest.placeholder,
         }}
-        suggestionClassName='mt-1 px-3 py-2 hover:bg-gray-100 rounded-md cursor-pointer'
-        currentSuggestionClassName='bg-blue-50'
-        highlightClassName='bg-yellow-200 font-bold'
-        hintClassName='px-3 py-1 text-sm text-gray-500 bg-gray-50'
+        suggestionClassName="mt-1 px-3 py-2 hover:bg-gray-100 rounded-md cursor-pointer"
+        currentSuggestionClassName="bg-blue-50"
+        highlightClassName="bg-yellow-200 font-bold"
+        hintClassName="px-3 py-1 text-sm text-gray-500 bg-gray-50"
         {...{ ...rest, onBlur, id: name }}
       />
       {isError && (

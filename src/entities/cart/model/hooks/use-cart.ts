@@ -3,7 +3,6 @@
 import { useEffect } from 'react'
 import { useShallow } from 'zustand/shallow'
 
-
 import { useCartStore } from '../cart'
 
 import type { CartStateItem } from '../types'

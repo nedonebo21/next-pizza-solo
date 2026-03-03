@@ -1,7 +1,6 @@
 import type { PizzaSize, PizzaType } from '@/entities/product'
 import type { Ingredient, ProductVariant } from '@prisma/client'
 
-
 /**
  * Функция для вычисления стоимости пиццы
  *

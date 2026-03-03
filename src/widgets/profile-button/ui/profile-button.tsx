@@ -5,7 +5,6 @@ import { useSession } from 'next-auth/react'
 import { SignInButton } from '@/features/auth'
 import { Button } from '@/shared/ui'
 
-
 type ProfileButtonProps = {
   className?: string
   onClick?: () => void

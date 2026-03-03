@@ -13,15 +13,11 @@ import {
 import { cn } from '@/shared/lib/utils'
 import { Container, Typography } from '@/shared/ui'
 
-
 import { CheckoutItems } from './checkout-items'
 import { CheckoutSidebar } from './checkout-sidebar'
 
 import type { CheckoutFormValues } from '@/features/checkout'
 import type { SubmitHandler } from 'react-hook-form'
-
-
-
 
 export const CheckoutPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)

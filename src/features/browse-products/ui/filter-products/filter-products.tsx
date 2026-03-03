@@ -7,7 +7,6 @@ import { Input, Typography, RangeSlider, CheckboxFilterGroup } from '@/shared/ui
 
 import type { ComponentProps } from 'react'
 
-
 type ProductFiltersProps = Omit<ComponentProps<'div'>, 'children'>
 
 export const FilterProducts = ({ className, ...rest }: ProductFiltersProps) => {

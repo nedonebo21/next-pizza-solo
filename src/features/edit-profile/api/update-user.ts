@@ -1,6 +1,5 @@
 'use server'
 
-
 import { hashSync } from 'bcrypt'
 
 import { getUserSession } from '@/entities/user'

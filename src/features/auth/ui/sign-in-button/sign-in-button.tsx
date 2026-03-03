@@ -36,8 +36,8 @@ export const SignInButton = ({ loginWith, onClick, isSignIn, className }: Props)
       {isGitHub && (
         <>
           <img
-            className='w-6 h-6'
-            src='https://github.githubassets.com/favicons/favicon.svg'
+            className="w-6 h-6"
+            src="https://github.githubassets.com/favicons/favicon.svg"
             alt={'gitLogo'}
           />
           GitHub
@@ -46,8 +46,8 @@ export const SignInButton = ({ loginWith, onClick, isSignIn, className }: Props)
       {isGoogle && (
         <>
           <img
-            className='w-6 h-6'
-            src='https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg'
+            className="w-6 h-6"
+            src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg"
             alt={'googleLogo'}
           />
           Google

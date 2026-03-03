@@ -1,7 +1,6 @@
 import type { mapPizzaSize, mapPizzaType } from './consts'
 import type { Ingredient, Product, ProductVariant } from '@prisma/client'
 
-
 export type ProductWithRelations = Product & {
   variants: ProductVariant[]
   ingredients: Ingredient[]

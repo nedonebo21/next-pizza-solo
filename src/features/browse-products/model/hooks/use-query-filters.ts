@@ -6,7 +6,6 @@ import { useEffect, useRef } from 'react'
 
 import type { Filters } from '@/features/browse-products/model/types'
 
-
 export const useQueryFilters = (filters: Filters) => {
   const isMounted = useRef(false)
 

@@ -1,6 +1,5 @@
 import { ArrowUpDown } from 'lucide-react'
 
-
 import { cn } from '@/shared/lib/utils'
 import { Typography } from '@/shared/ui'
 

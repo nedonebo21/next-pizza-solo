@@ -5,7 +5,6 @@ import { EditProfile } from '@/features/edit-profile'
 
 import { prisma } from '../../../../prisma/prisma-client'
 
-
 export const ProfilePage = async () => {
   const session = await getUserSession()
 

@@ -15,7 +15,7 @@ export const ClearButton = ({ onClick, className }: ClearButtonProps) => {
         'absolute right-4 top-1/2 -translate-y-1/2 opacity-30 hover:opacity-100 cursor-pointer',
         className
       )}
-      type='button'
+      type="button"
     >
       <XIcon className={'h-5 w-5'} />
     </button>
