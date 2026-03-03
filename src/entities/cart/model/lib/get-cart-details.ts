@@ -1,7 +1,6 @@
 import { calcCartItemPrice } from './calc-cart-item-price'
 
-import type { CartStateItem } from '@/entities/cart/model/types'
-import type { CartDTO } from '@/shared/services/cart/cart.dto'
+import type { CartDTO, CartStateItem } from '@/entities/cart/model/types'
 
 type ReturnProps = {
   items: CartStateItem[]
