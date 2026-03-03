@@ -4,11 +4,15 @@ import { useState } from 'react'
 import toast from 'react-hot-toast'
 
 import { useCart } from '@/entities/cart'
-import { CheckoutAddressForm, CheckoutForm, CheckoutPersonalForm  } from '@/features/checkout'
+import {
+  CheckoutAddressForm,
+  CheckoutForm,
+  CheckoutPersonalForm,
+  createOrder,
+} from '@/features/checkout'
 import { cn } from '@/shared/lib/utils'
 import { Container, Typography } from '@/shared/ui'
 
-import { createOrder } from '../../../../app/actions'
 
 import { CheckoutItems } from './checkout-items'
 import { CheckoutSidebar } from './checkout-sidebar'

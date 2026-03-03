@@ -5,3 +5,5 @@ export type { CheckoutFormValues } from './model/checkout-schema'
 
 export { createPayment } from './api/create-payment'
 export type { PaymentCallbackData } from './model/types'
+
+export { createOrder } from './api/create-order'
