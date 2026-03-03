@@ -7,7 +7,7 @@ import { TopBar } from '@/widgets/top-bar'
 import { ProductsGroupList } from './products-group-list'
 
 import type { GetSearchParams } from '@/features/browse-products'
-
+import { ViewStories } from '@/features/view-stories'
 
 export const Home = async ({ searchParams }: { searchParams: GetSearchParams }) => {
   const categories = await findPizzas(searchParams)
@@ -20,6 +20,7 @@ export const Home = async ({ searchParams }: { searchParams: GetSearchParams }) 
         </Typography>
       </Container>
       <TopBar categories={categories.filter(category => category.products.length > 0)} />
+      <ViewStories />
       <Container className={'mt-9 pb-14'}>
         <div className={'flex gap-15'}>
           <div className={'w-[250px]'}>

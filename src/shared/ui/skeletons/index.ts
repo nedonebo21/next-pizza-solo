@@ -1,1 +1,2 @@
-export { CheckoutItemSkeleton } from './checkout-item-skeleton'
+export { CheckoutItemSkeleton } from './checkout-item-skeletons'
+export { StoriesSkeleton } from './stories-skeleton'
