@@ -1,7 +1,7 @@
 import { Header } from '@/widgets/header'
 
 import type { Metadata } from 'next'
-import type { ReactNode } from 'react'
+import { ReactNode, Suspense } from 'react'
 
 export const metadata: Metadata = {
   title: 'Next Pizza | Главная',
@@ -17,7 +17,9 @@ export default function HomeLayout({
 }>) {
   return (
     <main className={'min-h-screen'}>
-      <Header />
+      <Suspense>
+        <Header />
+      </Suspense>
       {children}
       {modal}
     </main>
